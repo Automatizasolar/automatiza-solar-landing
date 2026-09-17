@@ -37,3 +37,7 @@ npm-debug.log*
 .vercel/
 .vercel
 .env*
+# Las excepciones tienen que ir DESPUES del patron que las cubre: en git manda
+# la ultima regla que casa, y sin esto la plantilla nunca se podria versionar.
+!.env.example
+!.env.ejemplo

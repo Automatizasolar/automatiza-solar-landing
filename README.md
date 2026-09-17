@@ -11,6 +11,24 @@ empresas de energía solar en Colombia.
 - **Mercado** — Colombia, pesos colombianos.
 - Sin precio visible: el objetivo de la página es la llamada de Calendly.
 
+## Las tres vías de contacto
+
+Por orden de fricción, que es el orden en que aparecen en pantalla:
+
+1. **WhatsApp** — `+57 314 549 2336`, como `https://wa.me/573145492336` con un mensaje ya
+   escrito. Es el botón principal (verde, con el glifo de la marca) porque la página vende
+   respuesta instantánea por WhatsApp: mandar al visitante a un formulario o a un calendario
+   para contarle eso contradice la oferta.
+2. **Calendly** — para quien ya decidió y quiere agendar de una vez, sin conversación previa.
+3. **Correo** — en el cierre y en el pie.
+
+El enlace de WhatsApp está en **cuatro sitios** (barra superior, hero, cierre y pie). Si el
+número cambia hay que tocar los cuatro: `grep -n 'wa.me' index.html`. El número también vive
+en `telephone` dentro del bloque JSON-LD.
+
+En la barra superior, por debajo de 30rem el botón de WhatsApp se queda **solo con el icono**
+(la etiqueta pasa a lectores de pantalla): con el logo al lado no caben dos etiquetas.
+
 ## Estructura
 
 ```
@@ -21,8 +39,6 @@ vercel.json     cabeceras de seguridad y caché
 
 ## Pendientes antes de publicar
 
-- [ ] **Número de WhatsApp.** Aún no hay ninguno en la página. Cuando exista, añadirlo como
-      tercera vía de contacto junto a Calendly y correo.
 - [ ] **Dominio propio.** Al ponerlo hay que actualizar `og:url`, `canonical` y la URL del
       `og:image` en `index.html`, y el `url` del bloque JSON-LD.
 - [ ] **Conectar el repo a Vercel** para que cada `push` despliegue solo. Hoy no lo está.

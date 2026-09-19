@@ -35,18 +35,30 @@ Son de banco de imágenes (Unsplash), descargadas ya en `webp` y al tamaño exac
 desde el propio dominio: la CSP es `img-src 'self' data:` y no admite ningún CDN en caliente.
 El origen de cada una y cómo sustituirla está en `brand/CREDITOS.md`.
 
-Están en cuatro sitios: una franja entre el titular y el chat, la foto bajo «Qué hace el
-agente mientras tú estás en una instalación» —que ilustra literalmente el titular—, y el
-fondo de las dos bandas navy.
+Están en cinco sitios: **detrás del titular**, la foto bajo «Qué hace el agente mientras tú
+estás en una instalación» —que ilustra literalmente el titular—, una **captura del panel** en
+la sección que habla del panel, y el fondo de las dos bandas navy.
+
+La del titular estuvo primero en una franja suelta entre el titular y el chat. Era el peor
+sitio: separaba la afirmación de su prueba. Detrás del titular, además, **argumenta la frase**
+—el hombre lleva las dos manos ocupadas con un panel, que es por lo que no contesta— y el
+chat queda pegado debajo.
+
+El velo del titular está calibrado, no elegido a ojo: a `.76/.88` el contraste del texto
+blanco en su punto peor es **7,8:1**, por encima del 7,0 que pide WCAG AAA. Si se cambia la
+foto o el velo, hay que volver a medirlo.
 
 Tres decisiones que no se ven leyendo el código:
 
-- **La franja de la cabecera va como fondo CSS y no como `<img>`.** En móvil se oculta, y un
-  `<img>` oculto **se descarga igual**; `loading="lazy"` tampoco lo evita. Declarando el fondo
-  dentro del media query, el móvil se ahorra 78 KB que no iba a ver.
+- **En la sección del panel va una captura del panel, no una foto de archivo.** Lo que
+  convence ahí es el producto. Si el panel cambia de aspecto, hay que regenerarla
+  (ver `brand/CREDITOS.md`).
 - **No hay fotos en «Siete días hábiles».** Ahí «Queda instalado» habla del agente, no de
   paneles: una foto de obra en esa sección haría pensar que los siete días son de instalación
   solar.
+- **No hay foto en «A tu WhatsApp no le escribe un solo tipo de persona».** Es el único tramo
+  largo sin imagen (2,1 pantallas) y se dejó así a propósito: es argumento denso y conviene
+  que el ojo descanse. Poner ahí una foto del sector sería decorar.
 - **La inicial sigue debajo del avatar del chat.** Si la foto falla se ve «AZ», no un hueco.
 
 La foto de Andrés Zapata es **el mismo fichero que usa la demo**: es la misma persona

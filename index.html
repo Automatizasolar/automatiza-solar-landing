@@ -255,6 +255,17 @@
     background:#fff;padding:2.25rem 2rem;text-align:center;
   }
   .demo-card p{color:var(--muted);margin:.75rem auto 1.75rem;max-width:30rem;}
+  /* La captura se recorta por abajo: interesa el marcador y la conversación, no
+     el final de la lista. El degradado evita que el corte parezca un fallo. */
+  .demo-shot{
+    display:block;width:100%;height:auto;max-height:23rem;object-fit:cover;
+    object-position:top center;
+    border:1px solid var(--line);border-radius:.75rem;
+    margin:0 auto 1.75rem;
+    box-shadow:0 1.25rem 2.5rem -1.25rem rgba(6,42,80,.35);
+    -webkit-mask-image:linear-gradient(180deg,#000 82%,transparent);
+            mask-image:linear-gradient(180deg,#000 82%,transparent);
+  }
 
   /* ---------------- Close ---------------- */
   .close-actions{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:2.25rem;}
@@ -276,16 +287,6 @@
      La página vendía instalaciones solares sin enseñar ni una. Las fotos sitúan
      el oficio; van con medidas fijas para que no salte la maquetación. */
 
-  /* Franja entre el titular y el chat de ejemplo. Va de fondo y no como <img>
-     porque en móvil se oculta, y un <img> oculto se descarga igual. */
-  .franja{
-    display:none;height:clamp(8rem,17vw,13.5rem);
-    background:var(--mist) center/cover no-repeat;
-  }
-  @media (min-width:40rem){
-    .franja{display:block;background-image:url("/brand/fotos/hero-franja.webp");}
-  }
-
   .foto-ancha{
     display:block;width:100%;height:clamp(11rem,26vw,17.5rem);object-fit:cover;
     margin-top:2.5rem;border-radius:1rem;
@@ -305,6 +306,26 @@
   .cierre .lede{color:#A9BDD4;}
   .cierre .btn-outline{border-color:rgba(255,255,255,.32);color:#fff;}
   .cierre .btn-outline:hover{border-color:#fff;}
+
+  /* ---- El titular, sobre la foto ----
+     La foto no decora aquí: el hombre lleva las dos manos ocupadas con un panel,
+     que es exactamente por lo que no contesta el WhatsApp. Argumenta la frase.
+     Estaba antes en una franja suelta entre el titular y el chat, que era el peor
+     sitio: separaba la afirmación de su prueba. */
+  .hero{
+    padding-top:clamp(4.5rem,9vw,7rem);
+    padding-bottom:clamp(3.5rem,7vw,5.5rem);
+  }
+  .hero h1{color:#fff;}
+  .hero .lede{color:#CBDCEE;}
+  .hero-note{color:#A9BDD4;}
+  .hero .btn-outline{border-color:rgba(255,255,255,.38);color:#fff;}
+  .hero .btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+  /* Velo más marcado que en las otras bandas: el titular ocupa cuatro líneas
+     enormes y necesita fondo parejo debajo de todo su ancho. */
+  .hero.con-foto::after{
+    background:linear-gradient(180deg,rgba(6,42,80,.76),rgba(6,42,80,.88));
+  }
 
 </style>
 </head>
@@ -326,7 +347,9 @@
 
 <main id="inicio">
 
-  <section class="hero">
+  <section class="hero con-foto">
+    <img class="fondo" src="/brand/fotos/hero-fondo.webp" width="1600" height="980"
+         alt="" fetchpriority="high" decoding="async" aria-hidden="true">
     <div class="shell">
       <h1>El WhatsApp que no contestas lo contesta tu competencia.</h1>
       <p class="lede">Instalo un agente que responde al instante sobre tu número de siempre, averigua qué necesita quien escribe y te lo deja listo para cerrar.</p>
@@ -340,10 +363,6 @@
       <p class="hero-note">Instalación cerrada en 7 días hábiles.</p>
     </div>
   </section>
-
-  <!-- Una franja del oficio antes del chat: la página habla de instalaciones
-       solares y hasta aquí no se veía ni una. -->
-  <div class="franja" role="presentation"></div>
 
   <section class="phone-wrap">
     <div class="shell">
@@ -459,6 +478,11 @@
       <div class="demo-card">
         <h3>Todo lo que respondió queda en un panel</h3>
         <p>Quién escribió, qué necesitaba, qué kit se le recomendó y en qué punto quedó. Puedes verlo funcionando ahora mismo.</p>
+        <!-- Aquí lo que convence no es una foto de archivo: es el panel de verdad.
+             Es una captura del mismo enlace que abre el botón de abajo. -->
+        <img class="demo-shot" src="/brand/fotos/panel-ejemplo.jpg" width="1240" height="779"
+             alt="El panel de leads: indicadores del mes a la izquierda y una conversación de WhatsApp abierta a la derecha"
+             loading="lazy" decoding="async">
         <a class="btn btn-outline" href="https://automatiza-solar-demo.vercel.app" target="_blank" rel="noopener">Abrir el panel de ejemplo</a>
       </div>
     </div>

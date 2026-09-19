@@ -17,10 +17,16 @@ imágenes. Cuida que no salgan caras reconocibles ni marcas de otros fabricantes
 
 | Fichero | Tamaño | Dónde se ve | Origen |
 |---|---|---|---|
-| `hero-franja.webp` | 1500×420 | Franja entre el titular y el chat | https://unsplash.com/photos/e9d2c2bf6de1 |
+| `hero-fondo.webp` | 1600×980 | Detrás del titular de la cabecera | https://unsplash.com/photos/e9d2c2bf6de1 |
 | `instalacion-tejado.webp` | 1200×440 | «Qué hace el agente mientras tú estás en una instalación» | https://unsplash.com/photos/813305a4a383 |
 | `detalle-panel.webp` | 1400×760 | Fondo de «Lo único que necesito de ti» | https://unsplash.com/photos/40b7c11c8727 |
 | `cierre-tejado.webp` | 1500×560 | Fondo de la banda de cierre | https://unsplash.com/photos/83776f89dd1e |
+
+`panel-ejemplo.jpg` (1240×779) **no es de banco de imágenes**: es una captura del propio
+panel de ejemplo, del mismo enlace que abre el botón de esa sección. Va en JPEG y no en webp
+porque se genera en local y aquí no hay herramienta capaz de escribir webp. Conviene
+regenerarla si el panel cambia de aspecto: basta con capturarlo a 1400×880 y reducirlo a
+1240 de ancho.
 
 Criterio: tejado residencial o vivienda, luz de día, sin marcas de otros fabricantes.
 **Nada de huertos solares de campo** — se venden kits para casas y pequeños negocios.

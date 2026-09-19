@@ -148,11 +148,17 @@
     display:flex;align-items:center;gap:.75rem;
     padding:.9375rem 1.125rem;border-bottom:1px solid var(--line);
   }
+  /* La inicial se queda debajo: si la foto no carga se ve "AZ" y no un hueco. */
   .phone-avatar{
+    position:relative;overflow:hidden;
     width:2.25rem;height:2.25rem;border-radius:50%;flex:none;
     background:var(--mist);color:var(--navy);
     display:flex;align-items:center;justify-content:center;
     font-weight:700;font-size:.8125rem;letter-spacing:-0.02em;
+  }
+  .phone-avatar img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;border-radius:50%;
   }
   .phone-who{min-width:0;}
   .phone-who b{display:block;font-size:.9375rem;font-weight:600;letter-spacing:-0.01em;}
@@ -266,6 +272,40 @@
     *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
     html{scroll-behavior:auto;}
   }
+  /* ================= Fotografía =================
+     La página vendía instalaciones solares sin enseñar ni una. Las fotos sitúan
+     el oficio; van con medidas fijas para que no salte la maquetación. */
+
+  /* Franja entre el titular y el chat de ejemplo. Va de fondo y no como <img>
+     porque en móvil se oculta, y un <img> oculto se descarga igual. */
+  .franja{
+    display:none;height:clamp(8rem,17vw,13.5rem);
+    background:var(--mist) center/cover no-repeat;
+  }
+  @media (min-width:40rem){
+    .franja{display:block;background-image:url("/brand/fotos/hero-franja.webp");}
+  }
+
+  .foto-ancha{
+    display:block;width:100%;height:clamp(11rem,26vw,17.5rem);object-fit:cover;
+    margin-top:2.5rem;border-radius:1rem;
+  }
+
+  /* Bandas con foto de fondo: la imagen va detrás y un velo navy encima, porque
+     el texto es blanco y sobre cielo abierto no tendría contraste suficiente. */
+  .con-foto{position:relative;isolation:isolate;overflow:hidden;}
+  .con-foto .fondo{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+  }
+  .con-foto::after{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(6,42,80,.90),rgba(6,42,80,.95));
+  }
+  /* El cierre era claro y pasa a navy: los botones y el texto se adaptan. */
+  .cierre .lede{color:#A9BDD4;}
+  .cierre .btn-outline{border-color:rgba(255,255,255,.32);color:#fff;}
+  .cierre .btn-outline:hover{border-color:#fff;}
+
 </style>
 </head>
 <body>
@@ -301,11 +341,16 @@
     </div>
   </section>
 
+  <!-- Una franja del oficio antes del chat: la página habla de instalaciones
+       solares y hasta aquí no se veía ni una. -->
+  <div class="franja" role="presentation"></div>
+
   <section class="phone-wrap">
     <div class="shell">
       <div class="phone" id="chat">
         <div class="phone-top">
-          <span class="phone-avatar" aria-hidden="true">AZ</span>
+          <span class="phone-avatar" aria-hidden="true">AZ<img src="/brand/avatares/andres.webp"
+            alt="" width="36" height="36" decoding="async"></span>
           <span class="phone-who">
             <b>Andrés Zapata</b>
             <span id="chat-state">en línea</span>
@@ -376,6 +421,10 @@
         <h2>Qué hace el agente mientras tú estás en una instalación.</h2>
         <p class="lede">Trabaja con tu catálogo y tus precios. No improvisa ni inventa cifras.</p>
       </div>
+      <!-- El titular describe literalmente esta foto: tú ahí arriba, el agente abajo. -->
+      <img class="foto-ancha" src="/brand/fotos/instalacion-tejado.webp" width="1200" height="440"
+           alt="Instalador fijando paneles solares en el tejado de una vivienda"
+           loading="lazy" decoding="async">
       <div class="flow">
         <div class="step">
           <span class="step-when">En segundos</span>
@@ -442,7 +491,9 @@
     </div>
   </section>
 
-  <section class="band band-navy">
+  <section class="band band-navy con-foto">
+    <img class="fondo" src="/brand/fotos/detalle-panel.webp" width="1400" height="760"
+         alt="" loading="lazy" decoding="async" aria-hidden="true">
     <div class="shell shell-narrow">
       <div class="head">
         <h2>Lo único que necesito de ti.</h2>
@@ -495,7 +546,9 @@
     </div>
   </section>
 
-  <section class="band">
+  <section class="band band-navy con-foto cierre">
+    <img class="fondo" src="/brand/fotos/cierre-tejado.webp" width="1500" height="560"
+         alt="" loading="lazy" decoding="async" aria-hidden="true">
     <div class="shell shell-narrow">
       <div class="head head-center">
         <h2>Los mensajes están entrando hoy.</h2>
@@ -522,7 +575,8 @@
       <a href="https://calendly.com/piedrahita-automatizasolar/30min">Agendar llamada</a>
       <a href="https://automatiza-solar-demo.vercel.app" target="_blank" rel="noopener">Panel de ejemplo</a>
     </div>
-    <p class="foot-legal">© 2026 Automatiza Solar. La conversación de esta página es una recreación con datos ficticios.</p>
+    <p class="foot-legal">© 2026 Automatiza Solar. La conversación de esta página es una recreación con datos
+      ficticios; la foto de perfil es de banco de imágenes y no corresponde a esa persona.</p>
   </div>
 </footer>
 

@@ -29,6 +29,29 @@ en `telephone` dentro del bloque JSON-LD.
 En la barra superior, por debajo de 30rem el botón de WhatsApp se queda **solo con el icono**
 (la etiqueta pasa a lectores de pantalla): con el logo al lado no caben dos etiquetas.
 
+## Las fotos
+
+Son de banco de imágenes (Unsplash), descargadas ya en `webp` y al tamaño exacto, y servidas
+desde el propio dominio: la CSP es `img-src 'self' data:` y no admite ningún CDN en caliente.
+El origen de cada una y cómo sustituirla está en `brand/CREDITOS.md`.
+
+Están en cuatro sitios: una franja entre el titular y el chat, la foto bajo «Qué hace el
+agente mientras tú estás en una instalación» —que ilustra literalmente el titular—, y el
+fondo de las dos bandas navy.
+
+Tres decisiones que no se ven leyendo el código:
+
+- **La franja de la cabecera va como fondo CSS y no como `<img>`.** En móvil se oculta, y un
+  `<img>` oculto **se descarga igual**; `loading="lazy"` tampoco lo evita. Declarando el fondo
+  dentro del media query, el móvil se ahorra 78 KB que no iba a ver.
+- **No hay fotos en «Siete días hábiles».** Ahí «Queda instalado» habla del agente, no de
+  paneles: una foto de obra en esa sección haría pensar que los siete días son de instalación
+  solar.
+- **La inicial sigue debajo del avatar del chat.** Si la foto falla se ve «AZ», no un hueco.
+
+La foto de Andrés Zapata es **el mismo fichero que usa la demo**: es la misma persona
+ficticia en los dos sitios. Si se cambia en uno, cambiarlo en el otro.
+
 ## Estructura
 
 ```

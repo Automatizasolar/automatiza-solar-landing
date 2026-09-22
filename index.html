@@ -327,6 +327,59 @@
     background:linear-gradient(180deg,rgba(6,42,80,.76),rgba(6,42,80,.88));
   }
 
+  /* ================= Preguntas frecuentes =================
+     Van con <details> nativo: se abre y cierra con teclado sin escribir una línea,
+     lo lee bien un lector de pantalla y sigue funcionando aunque el JS falle.
+     El atributo `name` compartido hace que abrir una cierre la anterior sin JS;
+     abajo hay una red de seguridad para los navegadores que aún no lo soportan. */
+  .faq{
+    margin-top:2.5rem;background:var(--paper);
+    border:1px solid var(--line);border-radius:1rem;overflow:hidden;
+  }
+  .faq-i + .faq-i{border-top:1px solid var(--line);}
+  .faq-i summary{
+    display:flex;align-items:flex-start;gap:1rem;justify-content:space-between;
+    padding:1.125rem 1.25rem;cursor:pointer;list-style:none;
+    font-weight:600;font-size:1.0625rem;letter-spacing:-0.01em;line-height:1.35;
+    transition:background .15s ease;
+  }
+  .faq-i summary::-webkit-details-marker{display:none;}
+  .faq-i summary:hover{background:var(--mist);}
+  .faq-i[open] summary{color:var(--green);}
+
+  /* Un más que se convierte en menos: dice a la vez que se puede abrir y que
+     esto de aquí ya está abierto. */
+  .faq-x{
+    position:relative;flex:none;width:1rem;height:1rem;margin-top:.25rem;
+  }
+  .faq-x::before,.faq-x::after{
+    content:"";position:absolute;inset:0;margin:auto;
+    background:var(--muted);border-radius:1px;
+    transition:transform .2s ease,background .15s ease;
+  }
+  .faq-x::before{width:1rem;height:2px;}
+  .faq-x::after{width:2px;height:1rem;}
+  .faq-i[open] .faq-x::before,.faq-i[open] .faq-x::after{background:var(--green);}
+  .faq-i[open] .faq-x::after{transform:rotate(90deg);}
+  @media (prefers-reduced-motion:reduce){
+    .faq-x::before,.faq-x::after{transition:none;}
+  }
+
+  .faq-r{padding:0 1.25rem 1.25rem;}
+  .faq-r p{
+    margin:0;max-width:44rem;color:var(--muted);
+    font-size:1rem;line-height:1.6;
+  }
+  @media not (prefers-reduced-motion:reduce){
+    .faq-i[open] .faq-r{animation:faqIn .22s ease-out;}
+  }
+  @keyframes faqIn{from{opacity:0;transform:translateY(-.25rem);}to{opacity:1;transform:none;}}
+
+  @media (max-width:40rem){
+    .faq-i summary{font-size:1rem;padding:1rem;}
+    .faq-r{padding:0 1rem 1rem;}
+  }
+
 </style>
 </head>
 <body>
@@ -570,6 +623,53 @@
     </div>
   </section>
 
+  <section class="band band-mist" id="preguntas">
+    <div class="shell shell-narrow">
+      <div class="head head-center">
+        <h2>Antes de que lo preguntes.</h2>
+        <p class="lede">Lo que suelen querer saber antes de la llamada.</p>
+      </div>
+      <div class="faq">
+        <details class="faq-i" name="faq">
+          <summary>¿Tengo que cambiar de número de WhatsApp?<span class="faq-x" aria-hidden="true"></span></summary>
+          <div class="faq-r"><p>No. El agente trabaja sobre el número que ya usas con tus clientes. No abres una línea nueva, no repartes otro contacto y nadie tiene que volver a guardarte.</p></div>
+        </details>
+        <details class="faq-i" name="faq">
+          <summary>¿De dónde saca los precios que da?<span class="faq-x" aria-hidden="true"></span></summary>
+          <div class="faq-r"><p>De tu catálogo. Le pasas qué vendes, a cuánto, en qué cantidades y qué se puede combinar con qué, y responde con eso. No estima, no redondea y no inventa cifras.</p></div>
+        </details>
+        <details class="faq-i" name="faq">
+          <summary>¿Y si le preguntan algo que no está en mi catálogo?<span class="faq-x" aria-hidden="true"></span></summary>
+          <div class="faq-r"><p>No improvisa. Cuando la pregunta se sale de lo que tú le diste, lo deja anotado en la conversación y te avisa para que entres tú. Prefiero que diga «eso lo confirma el técnico» a que se invente un dato delante de un cliente tuyo.</p></div>
+        </details>
+        <details class="faq-i" name="faq">
+          <summary>¿Puedo tomar yo una conversación cuando quiera?<span class="faq-x" aria-hidden="true"></span></summary>
+          <div class="faq-r"><p>Sí, en cualquier momento. Es tu WhatsApp de siempre: abres el chat y escribes. El agente deja de responder en ese hilo y sigues tú.</p></div>
+        </details>
+        <details class="faq-i" name="faq">
+          <summary>¿Cuánto tarda en estar funcionando?<span class="faq-x" aria-hidden="true"></span></summary>
+          <div class="faq-r"><p>Siete días hábiles desde que me pasas tu número y tu catálogo. Al tercer día ya lo pruebas tú escribiéndole como si fueras un cliente, y me dices qué cambiar.</p></div>
+        </details>
+        <details class="faq-i" name="faq">
+          <summary>¿Y si cambio mis precios o mis productos?<span class="faq-x" aria-hidden="true"></span></summary>
+          <div class="faq-r"><p>Se actualizan. Los precios y las combinaciones no están escritos dentro del agente a fuego: cuando cambien, me los pasas y responde con los nuevos.</p></div>
+        </details>
+        <details class="faq-i" name="faq">
+          <summary>¿Necesito saber de tecnología?<span class="faq-x" aria-hidden="true"></span></summary>
+          <div class="faq-r"><p>No. No instalas nada, no aprendes ningún programa y no cambias de herramienta. Sigues mirando tu WhatsApp como siempre; lo único distinto es que lo que llega de noche ya está contestado por la mañana.</p></div>
+        </details>
+        <details class="faq-i" name="faq">
+          <summary>¿Cuánto cuesta?<span class="faq-x" aria-hidden="true"></span></summary>
+          <div class="faq-r"><p>Depende de cuántos productos y combinaciones tenga tu catálogo, porque eso es lo que marca el trabajo de montarlo. Lo vemos en los treinta minutos de llamada, con tu caso delante y sin compromiso.</p></div>
+        </details>
+        <details class="faq-i" name="faq">
+          <summary>¿Hay permanencia?<span class="faq-x" aria-hidden="true"></span></summary>
+          <div class="faq-r"><p>No. Puedes parar cuando quieras. No tiene sentido atarte a algo que debería sostenerse solo por lo que te trae cada mes.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section class="band band-navy con-foto cierre">
     <img class="fondo" src="/brand/fotos/cierre-tejado.webp" width="1500" height="560"
          alt="" loading="lazy" decoding="async" aria-hidden="true">
@@ -618,6 +718,87 @@
   "areaServed":{"@type":"Country","name":"Colombia"},
   "priceRange":"$$",
   "knowsLanguage":"es-CO"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Tengo que cambiar de número de WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. El agente trabaja sobre el número que ya usas con tus clientes. No abres una línea nueva, no repartes otro contacto y nadie tiene que volver a guardarte."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿De dónde saca los precios que da?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De tu catálogo. Le pasas qué vendes, a cuánto, en qué cantidades y qué se puede combinar con qué, y responde con eso. No estima, no redondea y no inventa cifras."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si le preguntan algo que no está en mi catálogo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No improvisa. Cuando la pregunta se sale de lo que tú le diste, lo deja anotado en la conversación y te avisa para que entres tú. Prefiero que diga «eso lo confirma el técnico» a que se invente un dato delante de un cliente tuyo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo tomar yo una conversación cuando quiera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, en cualquier momento. Es tu WhatsApp de siempre: abres el chat y escribes. El agente deja de responder en ese hilo y sigues tú."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda en estar funcionando?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Siete días hábiles desde que me pasas tu número y tu catálogo. Al tercer día ya lo pruebas tú escribiéndole como si fueras un cliente, y me dices qué cambiar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si cambio mis precios o mis productos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se actualizan. Los precios y las combinaciones no están escritos dentro del agente a fuego: cuando cambien, me los pasas y responde con los nuevos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito saber de tecnología?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. No instalas nada, no aprendes ningún programa y no cambias de herramienta. Sigues mirando tu WhatsApp como siempre; lo único distinto es que lo que llega de noche ya está contestado por la mañana."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende de cuántos productos y combinaciones tenga tu catálogo, porque eso es lo que marca el trabajo de montarlo. Lo vemos en los treinta minutos de llamada, con tu caso delante y sin compromiso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay permanencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Puedes parar cuando quieras. No tiene sentido atarte a algo que debería sostenerse solo por lo que te trae cada mes."
+      }
+    }
+  ]
 }
 </script>
 
@@ -724,6 +905,19 @@
       paint();
     }
   }
+
+  /* ---- Acordeón: sólo una pregunta abierta a la vez ----
+     El atributo `name` compartido ya lo hace de forma nativa en los navegadores
+     al día. Esto cubre a los que todavía no: si el navegador no cierra la
+     anterior por su cuenta, la cerramos nosotros. En los que sí lo hacen, este
+     bucle no encuentra ninguna abierta y no hace nada. */
+  var preguntas = Array.prototype.slice.call(document.querySelectorAll(".faq-i"));
+  preguntas.forEach(function(d){
+    d.addEventListener("toggle", function(){
+      if(!d.open) return;
+      preguntas.forEach(function(otra){ if(otra !== d) otra.open = false; });
+    });
+  });
 })();
 </script>
 

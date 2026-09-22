@@ -64,6 +64,25 @@ Tres decisiones que no se ven leyendo el código:
 La foto de Andrés Zapata es **el mismo fichero que usa la demo**: es la misma persona
 ficticia en los dos sitios. Si se cambia en uno, cambiarlo en el otro.
 
+## Preguntas frecuentes
+
+Van al final, **justo antes de la llamada a la acción**: primero se resuelven las dudas y
+después se pide la cita, no al revés.
+
+Son `<details>` nativos y no un acordeón hecho a mano, por tres razones concretas: se abren
+y cierran con el teclado sin escribir una línea, un lector de pantalla los anuncia bien, y
+siguen funcionando aunque el JavaScript falle. El atributo `name="faq"` compartido es lo que
+hace que **abrir una cierre la anterior** — también de forma nativa. El script del final es
+sólo una red de seguridad para navegadores que todavía no soportan ese atributo; donde sí lo
+soportan, no hace nada.
+
+Las respuestas salen de lo que la página ya promete. **Tres se acordaron expresamente** y no
+deben cambiarse sin decidirlo: el precio no se da (depende del catálogo y se ve en la
+llamada), **no hay permanencia**, y cuando el agente no sabe algo **no improvisa: avisa**.
+
+También van como datos estructurados `FAQPage` en JSON-LD, así que Google puede enseñar las
+preguntas directamente en el resultado de búsqueda.
+
 ## Estructura
 
 ```

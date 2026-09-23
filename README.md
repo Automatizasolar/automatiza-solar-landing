@@ -15,16 +15,26 @@ empresas de energía solar en Colombia.
 
 Por orden de fricción, que es el orden en que aparecen en pantalla:
 
-1. **WhatsApp** — `+57 314 549 2336`, como `https://wa.me/573145492336` con un mensaje ya
-   escrito. Es el botón principal (verde, con el glifo de la marca) porque la página vende
-   respuesta instantánea por WhatsApp: mandar al visitante a un formulario o a un calendario
-   para contarle eso contradice la oferta.
+1. **WhatsApp** — **sin número ahora mismo**. El anterior se dio de baja y los botones están
+   desactivados a propósito: un enlace a un número que ya no existe abre WhatsApp con un error
+   de «número no válido», y en una página de ventas eso se lee como que está rota.
+
+   **Para reactivarlo se toca una sola línea.** En el `<script>` del final, busca `WHATSAPP` y
+   escribe el número entre las comillas, en formato internacional y sin signos
+   (`var WHATSAPP = "573001234567";`). Con eso vuelven solos los cuatro botones —barra
+   superior, portada, cierre y pie—, el pie vuelve a mostrar el número escrito y Calendly
+   regresa a ser secundario. Falta sólo añadirlo a mano en el bloque JSON-LD del final como
+   `"telephone":"+57XXXXXXXXXX",`.
+
+   Cuando hay número es el botón principal (verde, con el glifo de la marca) porque la página
+   vende respuesta instantánea por WhatsApp: mandar al visitante a un formulario o a un
+   calendario para contarle eso contradice la oferta.
 2. **Calendly** — para quien ya decidió y quiere agendar de una vez, sin conversación previa.
 3. **Correo** — en el cierre y en el pie.
 
-El enlace de WhatsApp está en **cuatro sitios** (barra superior, hero, cierre y pie). Si el
-número cambia hay que tocar los cuatro: `grep -n 'wa.me' index.html`. El número también vive
-en `telephone` dentro del bloque JSON-LD.
+El enlace de WhatsApp está en **cuatro sitios** (barra superior, hero, cierre y pie), pero ya
+no hay que tocar los cuatro: los construye el script a partir de la constante `WHATSAPP`, que
+es el único sitio donde se escribe el número.
 
 En la barra superior, por debajo de 30rem el botón de WhatsApp se queda **solo con el icono**
 (la etiqueta pasa a lectores de pantalla): con el logo al lado no caben dos etiquetas.

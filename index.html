@@ -380,6 +380,21 @@
     .faq-r{padding:0 1rem 1rem;}
   }
 
+  /* `.btn` trae su propio display, y eso le gana al atributo `hidden`: sin esta
+     línea los botones sin número se seguirían viendo, vacíos y sin enlace. */
+  [data-wa][hidden]{display:none;}
+
+  /* ---- Sin número de WhatsApp ----
+     Mientras no haya número, el botón verde desaparece y la portada se quedaría
+     con dos botones de contorno y ninguna acción destacada. Calendly ocupa ese
+     sitio hasta que vuelva. */
+  body.sin-whatsapp .btn-cal{
+    background:var(--green);border-color:transparent;color:#fff;
+  }
+  body.sin-whatsapp .btn-cal:hover{background:var(--green-bright);border-color:transparent;}
+  body.sin-whatsapp .cierre .btn-cal{border-color:transparent;color:#fff;}
+  body.sin-whatsapp .cierre .btn-cal:hover{border-color:transparent;}
+
 </style>
 </head>
 <body>
@@ -390,10 +405,10 @@
       <img src="/brand/logo-horizontal.svg" width="220" height="52" alt="Automatiza Solar">
     </a>
     <div class="acciones">
-      <a class="btn btn-solid btn-sm btn-wa" href="https://wa.me/573145492336?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Automatiza%20Solar%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20el%20agente%20de%20WhatsApp." target="_blank" rel="noopener">
+      <a class="btn btn-solid btn-sm btn-wa" data-wa hidden target="_blank" rel="noopener">
         <svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="lbl">WhatsApp</span>
       </a>
-      <a class="btn btn-outline btn-sm" href="https://calendly.com/piedrahita-automatizasolar/30min">Agendar llamada</a>
+      <a class="btn btn-outline btn-sm btn-cal" href="https://calendly.com/piedrahita-automatizasolar/30min">Agendar llamada</a>
     </div>
   </div>
 </header>
@@ -407,10 +422,10 @@
       <h1>El WhatsApp que no contestas lo contesta tu competencia.</h1>
       <p class="lede">Instalo un agente que responde al instante sobre tu número de siempre, averigua qué necesita quien escribe y te lo deja listo para cerrar.</p>
       <div class="hero-actions">
-        <a class="btn btn-solid btn-wa" href="https://wa.me/573145492336?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Automatiza%20Solar%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20el%20agente%20de%20WhatsApp." target="_blank" rel="noopener">
+        <a class="btn btn-solid btn-wa" data-wa hidden target="_blank" rel="noopener">
           <svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>Escríbeme por WhatsApp</span>
         </a>
-        <a class="btn btn-outline" href="https://calendly.com/piedrahita-automatizasolar/30min">Agendar llamada de 30 minutos</a>
+        <a class="btn btn-outline btn-cal" href="https://calendly.com/piedrahita-automatizasolar/30min">Agendar llamada de 30 minutos</a>
         <a class="btn btn-outline" href="https://automatiza-solar-demo.vercel.app" target="_blank" rel="noopener">Ver el panel</a>
       </div>
       <p class="hero-note">Instalación cerrada en 7 días hábiles.</p>
@@ -678,10 +693,10 @@
         <h2>Los mensajes están entrando hoy.</h2>
         <p class="lede">Mientras decides, quien te escribió anoche ya recibió respuesta de otra empresa. Cada semana que pasa no es una semana neutra: es terreno que ocupa tu competencia.</p>
         <div class="close-actions">
-          <a class="btn btn-solid btn-wa" href="https://wa.me/573145492336?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Automatiza%20Solar%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20el%20agente%20de%20WhatsApp." target="_blank" rel="noopener">
+          <a class="btn btn-solid btn-wa" data-wa hidden target="_blank" rel="noopener">
             <svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>Escríbeme por WhatsApp</span>
           </a>
-          <a class="btn btn-outline" href="https://calendly.com/piedrahita-automatizasolar/30min">Agendar llamada de 30 minutos</a>
+          <a class="btn btn-outline btn-cal" href="https://calendly.com/piedrahita-automatizasolar/30min">Agendar llamada de 30 minutos</a>
           <a class="btn btn-outline" href="mailto:piedrahita@automatizasolar.com">Escribirme por correo</a>
         </div>
       </div>
@@ -694,7 +709,7 @@
   <div class="shell">
     <img src="/brand/logo-horizontal.svg" width="184" height="44" alt="Automatiza Solar">
     <div class="foot-links">
-      <a href="https://wa.me/573145492336?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Automatiza%20Solar%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20el%20agente%20de%20WhatsApp." target="_blank" rel="noopener">WhatsApp +57 314 549 2336</a>
+      <a data-wa data-wa-num hidden target="_blank" rel="noopener">WhatsApp</a>
       <a href="mailto:piedrahita@automatizasolar.com">piedrahita@automatizasolar.com</a>
       <a href="https://calendly.com/piedrahita-automatizasolar/30min">Agendar llamada</a>
       <a href="https://automatiza-solar-demo.vercel.app" target="_blank" rel="noopener">Panel de ejemplo</a>
@@ -712,7 +727,6 @@
   "description":"Instalación de agentes de respuesta automática por WhatsApp para empresas de energía solar en Colombia.",
   "url":"https://automatiza-solar-landing.vercel.app/",
   "email":"piedrahita@automatizasolar.com",
-  "telephone":"+573145492336",
   "logo":"https://automatiza-solar-landing.vercel.app/brand/logo-horizontal.svg",
   "image":"https://automatiza-solar-landing.vercel.app/brand/og-automatiza-solar.png",
   "areaServed":{"@type":"Country","name":"Colombia"},
@@ -805,6 +819,58 @@
 <script>
 (function(){
   "use strict";
+
+  /* ==========================================================================
+     NÚMERO DE WHATSAPP — es lo único que hay que tocar para volver a activarlo.
+
+     Escribe el número nuevo entre las comillas, en formato internacional y sin
+     signos ni espacios. Para Colombia: 57 + el número.
+         Ejemplo:  var WHATSAPP = "573001234567";
+
+     Mientras esté vacío, los botones de WhatsApp no aparecen y Calendly pasa a
+     ser el botón principal. Es a propósito: un enlace a un número dado de baja
+     abre WhatsApp con un error de "número no válido", y eso en una página de
+     ventas se lee como que está rota. Mejor no ofrecerlo que ofrecerlo roto.
+
+     Al rellenarlo se activan solos los cuatro botones (barra superior, portada,
+     cierre y pie). No hay que tocar nada más aquí.
+
+     Queda pendiente añadirlo también en el bloque JSON-LD del final del fichero,
+     como  "telephone":"+57XXXXXXXXXX",  para que Google lo asocie al negocio.
+     ========================================================================== */
+  var WHATSAPP = "";
+
+  var MENSAJE = "Hola, vi la página de Automatiza Solar y quiero saber cómo " +
+                "funciona el agente de WhatsApp.";
+
+  /* 573001234567 -> +57 300 123 4567. Para otros prefijos no inventa grupos:
+     devuelve el número tal cual con el signo delante. */
+  function legible(n){
+    if(n.length === 12 && n.slice(0,2) === "57"){
+      return "+57 " + n.slice(2,5) + " " + n.slice(5,8) + " " + n.slice(8);
+    }
+    return "+" + n;
+  }
+
+  (function activaWhatsApp(){
+    var enlaces = document.querySelectorAll("[data-wa]");
+    var hay = /^[0-9]{8,15}$/.test(String(WHATSAPP).replace(/\D/g, ""));
+    if(!hay){
+      /* Sin número: Calendly se vuelve el botón principal para que la portada no
+         se quede sin una acción destacada. */
+      document.body.classList.add("sin-whatsapp");
+      return;
+    }
+    var url = "https://wa.me/" + String(WHATSAPP).replace(/\D/g, "") +
+              "?text=" + encodeURIComponent(MENSAJE);
+    var limpio = String(WHATSAPP).replace(/\D/g, "");
+    Array.prototype.forEach.call(enlaces, function(a){
+      a.href = url;
+      a.hidden = false;
+      /* En el pie el número se lee, no sólo se pulsa. */
+      if(a.hasAttribute("data-wa-num")) a.textContent = "WhatsApp " + legible(limpio);
+    });
+  })();
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---- Conversación: se reproduce una sola vez al entrar en pantalla ---- */

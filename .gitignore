@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Metadatos de la herramienta de diseño, no son del proyecto
+.impeccable/

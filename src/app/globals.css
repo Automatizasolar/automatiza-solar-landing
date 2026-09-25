@@ -1,26 +1,213 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Automatiza Solar - mundo visual "La hora"
+   Un solo tema, claro. La pagina es el parte de una jornada
+   impreso en papel: tinta navy de la marca sobre papel, el rail
+   de horas grabado al margen y un unico verde, reservado por ley
+   al momento vivo y a la accion principal.
+   ============================================================ */
+
+@theme {
+  /* Superficies. En claro, elevar es aclarar: el papel es el fondo
+     y lo elevado se va al blanco puro. */
+  --color-ground: #fafaf9;
+  --color-raised: #ffffff;
+  --color-raised-2: #f1f3f2;
+
+  /* Trazos. Elevacion declarada una sola vez: borde, nunca sombra difusa. */
+  --color-rule: #dfe3e1;
+  --color-rule-soft: #eceeec;
+
+  /* Tinta. El navy de la marca hace de negro. Medido sobre --color-ground:
+     16,1:1 el principal y 6,6:1 el secundario. */
+  --color-ink: #0a1e33;
+  --color-ink-muted: #4e5c6a;
+  --color-ink-faint: #647282;
+
+  /* Acento unico. Sobre papel blanco el verde de marca hay que bajarlo:
+     #17A07A daba 3,2:1 y era ilegible. Este da 5,6:1 como texto y 5,8:1
+     con tinta blanca encima del boton. */
+  --color-solar: #0f7355;
+  --color-solar-deep: #0b6a4e;
+
+  --font-display: var(--font-archivo), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-mono-measure), ui-monospace, SFMono-Regular, monospace;
+
+  --radius-surface: 14px;
+
+  /* Curvas. Salida exponencial desde un estado ya visible. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-ground);
+  /* Lenis conduce el scroll; el nativo suave pelearia con el. */
+  scroll-behavior: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* ------------------------------------------------------------
+   Superficies del navegador que nadie dibuja y que igual visten
+   la pagina: seleccion, cursor de texto, foco, barra de scroll.
+   ------------------------------------------------------------ */
+
+::selection {
+  background: color-mix(in oklab, var(--color-solar) 22%, transparent);
+  color: var(--color-ink);
+}
+
+:root {
+  caret-color: var(--color-solar);
+  accent-color: var(--color-solar);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-solar);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@supports (scrollbar-color: red blue) {
+  html {
+    scrollbar-color: #c9d0cd var(--color-ground);
+    scrollbar-width: thin;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ground);
+}
+::-webkit-scrollbar-thumb {
+  background: #c9d0cd;
+  border-radius: 99px;
+  border: 3px solid var(--color-ground);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aeb8b4;
+}
+
+/* Cifras medidas: siempre tabulares, para que las horas no bailen. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Subrayados que respiran */
+a {
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: from-font;
+}
+
+/* ------------------------------------------------------------
+   Estado inicial de los reveals. Sin JS el contenido se ve igual:
+   .reveal solo baja opacidad cuando GSAP confirma que tomo el mando.
+   El gancho va en <body> y como data-attr a proposito: React es dueno
+   del className de <html> y lo reescribe al hidratar, llevandose por
+   delante cualquier clase anadida a mano.
+   ------------------------------------------------------------ */
+body[data-motion="on"] .reveal {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  will-change: transform, opacity;
+}
+
+/* ------------------------------------------------------------
+   Movimiento reducido: la pagina se queda quieta y completa.
+   Nada de contenido escondido detras de una animacion que no corre.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  body[data-motion="on"] .reveal {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   Rejilla de la conversacion. En movil el remate va DESPUES del
+   hilo, que es su orden narrativo; en escritorio vuelve a la
+   columna izquierda, bajo el titular, con el hilo al lado.
+   ------------------------------------------------------------ */
+.conv-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-areas:
+    "head"
+    "thread"
+    "payoff";
+}
+
+.conv-head {
+  grid-area: head;
+}
+.conv-thread {
+  grid-area: thread;
+}
+.conv-payoff {
+  grid-area: payoff;
+}
+
+@media (min-width: 1024px) {
+  .conv-grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+    grid-template-areas:
+      "head thread"
+      "payoff thread";
+    align-content: center;
+    align-items: center;
+    column-gap: 4rem;
+    row-gap: 2rem;
+  }
+}
+
+/* ------------------------------------------------------------
+   Apertura de las preguntas. Donde el navegador sabe animar
+   ::details-content lo hace; donde no, abre de golpe y ya.
+   ------------------------------------------------------------ */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: clip;
+    opacity: 0;
+    transition:
+      block-size 260ms var(--ease-out-strong),
+      content-visibility 260ms allow-discrete,
+      opacity 200ms ease;
+  }
+
+  .faq-item[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
 }

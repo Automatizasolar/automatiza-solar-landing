@@ -17,6 +17,16 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
  * y verlos superponerse dice que ocurren en la misma llamada y no en cuatro
  * momentos distintos. La que sale se encoge y se apaga; nunca desaparece.
  *
+ * Las tarjetas miden 58dvh, no una pantalla entera. El contenido de cada una
+ * ocupa unos 449px, así que a 522px quedan 73px de holgura: lo justo para que
+ * siga leyéndose como tarjeta flotando en su caja y no como caja llena. Por
+ * debajo de 56dvh el efecto muere.
+ *
+ * Y se lee mejor corta: el desenfoque de la que sale corre siempre sobre un
+ * viewport completo, mida lo que mida la tarjeta, así que con tarjetas de 522px
+ * la siguiente entra mientras la anterior aún está en su sitio y el solape se
+ * ve de verdad.
+ *
  * Cada tarjeta lleva su z-index explícito y creciente, y eso no es adorno.
  * Al fijar una tarjeta, GSAP la pone en `position: fixed`, y un elemento
  * posicionado se pinta por encima del contenido que sigue en flujo normal. La
@@ -65,7 +75,7 @@ export function AgentStack() {
 
   return (
     <Section ref={root} hour={agent.steps[0].at}>
-      <Wrap className="pt-16 pb-10 lg:pt-20">
+      <Wrap className="pt-14 pb-8 lg:pt-16">
         <h2 className="max-w-[17ch] text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.06] font-semibold tracking-[-0.03em] text-balance">
           {agent.title}
         </h2>
@@ -73,8 +83,8 @@ export function AgentStack() {
 
       {/* La banda ilustra el titular literalmente: estas manos están ocupadas,
           y por eso no hay nadie contestando el WhatsApp. */}
-      <Wrap className="pb-14 lg:pb-20">
-        <div className="reveal relative aspect-[21/9] overflow-hidden rounded-[14px] border border-[var(--color-rule)]">
+      <Wrap className="pb-12 lg:pb-16">
+        <div className="reveal relative aspect-[5/2] overflow-hidden rounded-[14px] border border-[var(--color-rule)]">
           <Image
             src="/brand/fotos/manos-instalacion.jpg"
             alt="Manos enguantadas atornillando un panel solar sobre una estructura de tejado"
@@ -89,7 +99,7 @@ export function AgentStack() {
         {agent.steps.map((s, i) => (
           <div
             key={s.title}
-            className="stack-card relative flex items-center py-6 lg:min-h-[100dvh] lg:py-0"
+            className="stack-card relative flex items-center py-6 lg:min-h-[58dvh] lg:py-0"
             style={{ zIndex: i + 1 }}
           >
             <Wrap>

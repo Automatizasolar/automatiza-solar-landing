@@ -23,7 +23,7 @@ export function Closing() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--color-ground)_0%,transparent_30%,transparent_70%,var(--color-ground)_100%)]" />
       </div>
 
-      <Wrap className="relative py-28 lg:py-40">
+      <Wrap className="relative py-20 lg:py-28">
         <div className="reveal max-w-[34rem]">
           <h2 className="text-[clamp(2.1rem,4.6vw,3.6rem)] leading-[1.05] font-semibold tracking-[-0.03em] text-balance">
             {closing.title}

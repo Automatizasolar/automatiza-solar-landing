@@ -5,14 +5,18 @@ import { cta, site } from "@/lib/site";
 import { Section, Wrap } from "./ui";
 
 /**
+ * Va justo detrás de la conversación, a las 07:40, porque es la segunda demo:
+ * el remate de la conversación dice "te enteraste el lunes a las 7:40" y este
+ * titular empieza con una "Y" que solo conecta si está aquí.
+ *
  * En la sección del panel va una captura del panel, no una foto de archivo.
  * Lo que convence aquí es el producto. La captura se recorta dura contra el
  * campo oscuro en vez de flotar centrada con sombra.
  */
 export function Panel() {
   return (
-    <Section hour="10:30" className="overflow-clip">
-      <Wrap className="py-24 lg:py-32">
+    <Section hour="07:40" className="overflow-clip">
+      <Wrap className="py-16 lg:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
           <div className="reveal">
             <h2 className="max-w-[14ch] text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.06] font-semibold tracking-[-0.03em] text-balance">

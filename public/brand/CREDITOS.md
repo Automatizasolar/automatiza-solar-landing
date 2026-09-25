@@ -27,7 +27,6 @@ Tres criterios que se aplicaron al elegirlas y que conviene mantener:
 |---|---|---|---|
 | `hero-instalador.jpg` | 1800×1350 | Placa de la esquina en la portada | https://unsplash.com/photos/949b1732bb0a |
 | `manos-instalacion.jpg` | 2000×1334 | Banda bajo «Qué hace mientras tú estás en una instalación» | https://unsplash.com/photos/40b7c11c8727 |
-| `panel-textura.jpg` | 1800×2700 | Placa lateral de «Lo único que necesito de ti» | https://unsplash.com/photos/2SfssudtyIA |
 | `casa-instalada.jpg` | 2000×1126 | Fondo de la banda de cierre | https://unsplash.com/photos/beef51a914fe |
 
 **La de la portada argumenta la frase:** el instalador tiene las dos manos ocupadas
@@ -37,6 +36,11 @@ cambia, que la sustituta haga el mismo trabajo.
 `panel-ejemplo.jpg` (1240×779) **no es de banco de imágenes**: es una captura del propio
 panel de ejemplo, del mismo enlace que abre el botón de esa sección. Conviene regenerarla si
 el panel cambia de aspecto: basta con capturarlo a 1400×880 y reducirlo a 1240 de ancho.
+
+**Se retiró `panel-textura.jpg`** al absorber «Lo único que necesito de ti» dentro del
+Día 1. Era la foto que peor argumentaba su texto: un detalle de vidrio con el cielo
+reflejado no ilustra «lo que necesito de ti». Quedan tres fotos y las tres se ganan su
+sitio. Si hiciera falta recuperarla: https://unsplash.com/photos/2SfssudtyIA
 
 **No hay fotos en «Siete días hábiles» a propósito.** Ahí «Queda instalado» se refiere al
 agente de WhatsApp, no a paneles: una foto de instalación solar en esa sección induciría a

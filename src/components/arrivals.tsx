@@ -47,7 +47,7 @@ export function Arrivals() {
 
   return (
     <Section ref={root} hour={arrivals.people[0].at}>
-      <div className="flex flex-col justify-center py-24 lg:min-h-[100dvh]">
+      <div className="flex flex-col justify-center py-16 lg:py-20">
         <Wrap>
           <h2 className="max-w-[18ch] text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.06] font-semibold tracking-[-0.03em] text-balance">
             {arrivals.title}
@@ -59,7 +59,7 @@ export function Arrivals() {
 
         {/* El recorte va aquí dentro y no en la sección: GSAP fija la sección
             y un overflow en el elemento fijado deja escapar la primera tarjeta. */}
-        <div className="mt-14 overflow-hidden lg:mt-20 lg:[mask-image:linear-gradient(90deg,transparent_0,#000_176px,#000_calc(100%-176px),transparent_100%)]">
+        <div className="mt-14 overflow-hidden lg:mt-20 lg:[mask-image:linear-gradient(90deg,transparent_0,#000_132px,#000_calc(100%-132px),transparent_100%)]">
           <div
             ref={track}
             className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-pl-5 px-5 pb-6 sm:scroll-pl-8 sm:px-8 lg:scroll-pl-12 lg:overflow-visible lg:px-12 lg:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -67,7 +67,7 @@ export function Arrivals() {
             {arrivals.people.map((p) => (
               <article
                 key={p.label}
-                className="w-[78vw] shrink-0 snap-start sm:w-[58vw] lg:w-[min(42vw,560px)]"
+                className="w-[78vw] shrink-0 snap-start sm:w-[58vw] lg:w-[min(34vw,440px)]"
               >
                 {/* Anotación fijada al eje con línea guía, no tarjeta suelta. */}
                 <div className="flex items-center gap-3">

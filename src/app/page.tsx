@@ -7,7 +7,6 @@ import { Arrivals } from "@/components/arrivals";
 import { AgentStack } from "@/components/agent-stack";
 import { Panel } from "@/components/panel";
 import { SevenDays } from "@/components/seven-days";
-import { Requirements } from "@/components/requirements";
 import { Fit } from "@/components/fit";
 import { Faq } from "@/components/faq";
 import { Closing } from "@/components/closing";
@@ -26,11 +25,12 @@ export default function Page() {
       <main>
         <Hero />
         <Conversation />
-        <Arrivals />
-        <AgentStack />
+        {/* Segunda demo, a las 07:40: recoge justo donde lo deja el remate de
+            la conversación. */}
         <Panel />
+        <AgentStack />
+        <Arrivals />
         <SevenDays />
-        <Requirements />
         <Fit />
         <Faq />
         <Closing />

@@ -1,5 +1,7 @@
 /**
- * Todo el texto visible de la página, en un solo sitio.
+ * Todo el texto visible de la página, en un solo sitio. Y ahora es verdad: los
+ * titulares de la conversación y de las preguntas estaban sueltos dentro de sus
+ * componentes, así que quien editaba este fichero se los saltaba.
  *
  * Tres respuestas están acordadas y no se cambian sin decidirlo: el precio no
  * se da (depende del catálogo y se ve en la llamada), no hay permanencia, y
@@ -10,13 +12,24 @@
 
 export const hero = {
   headline: ["El WhatsApp que no contestas", "lo contesta tu competencia"],
-  sub: "Instalo un agente que responde al instante sobre tu número de siempre, califica a quien escribe y agenda la visita.",
+  // Nombra la categoría, conserva "Instalo" (toda la página está escrita en
+  // primera persona) y conserva "de siempre", que es el diferenciador.
+  sub: "Instalo un agente de atención y ventas en tu WhatsApp de siempre: responde al instante, califica y agenda la visita.",
   clock: { day: "domingo", time: "22:14" },
 };
 
 /** Recreación con datos ficticios. El aviso del pie lo declara. */
 export const conversation = {
+  heading: "Tú estabas dormido. Alguien preguntaba precios.",
+  /**
+   * Antes decía "sin nadie al otro lado del teléfono". Leído en frío, eso
+   * significa que ahí no contestó nadie, que es lo contrario del argumento.
+   * Tiene que quedar claro que no había nadie *de tu equipo*, y que quien
+   * respondió fue el agente.
+   */
+  lead: "Tres minutos de un domingo por la noche. No contestó nadie de tu equipo: contestó el agente, con tu catálogo y tus precios.",
   contact: { name: "Andrés Zapata", initials: "AZ", avatar: "/brand/avatares/andres.webp" },
+  agentLabel: "Responde el agente",
   messages: [
     { from: "them", at: "22:14", text: "Buenas noches, vi el video de los paneles. ¿Cuánto me sale para una casa?" },
     { from: "us", at: "22:14", text: "Buenas noches, Andrés. Con gusto. ¿Cuánto te llega de luz al mes, más o menos?" },
@@ -30,23 +43,41 @@ export const conversation = {
   payoff: "Tú te enteraste el lunes a las 7:40 de la mañana. La visita ya estaba puesta.",
 };
 
-/** Los cuatro que escriben. Llegan a horas distintas, y ninguna te conviene. */
+/**
+ * El panel es la segunda demo y va justo detrás de la conversación, a las 07:40:
+ * el remate dice "te enteraste el lunes a las 7:40" y este titular empieza con
+ * una "Y" que ahí sí conecta con algo.
+ */
+export const panel = {
+  title: "Y tú lo ves todo desde un panel",
+  body: "Cada conversación, en qué estado va y qué se respondió. Puedes tomar cualquier hilo cuando quieras: es tu WhatsApp de siempre y el agente se calla ahí mismo.",
+  note: "El panel del enlace es real y está abierto. Míralo antes de hablar conmigo.",
+  image: { src: "/brand/fotos/panel-ejemplo.jpg", w: 1240, h: 779 },
+};
+
+/**
+ * Los cuatro que escriben. Llegan a horas distintas, y ninguna te conviene.
+ *
+ * Sus horas van después de las 08:21 de la pila a propósito: el raíl mide un
+ * día que corre hacia delante y no puede retroceder en ningún punto. Esta
+ * sección es el goteo del resto de la jornada.
+ */
 export const arrivals = {
   title: "A tu WhatsApp no le escribe un solo tipo de persona",
   lead: "Le escriben cuatro, y cada uno se pierde de una forma distinta cuando nadie contesta.",
   people: [
     {
-      at: "06:41",
+      at: "09:10",
       label: "Ya decidió",
       body: "Tiene el presupuesto aprobado y solo quiere saber para cuándo puedes. Si tardas un día, ya arrancó con otro.",
     },
     {
-      at: "10:12",
+      at: "12:45",
       label: "Está comparando",
       body: "Está cotizando en tres empresas al tiempo. Gana la que responde primero, no la más barata.",
     },
     {
-      at: "14:58",
+      at: "16:30",
       label: "Vio un video",
       body: "Le interesó pero no sabe cuánto consume ni qué necesita. Alguien tiene que preguntárselo.",
     },
@@ -89,14 +120,14 @@ export const agent = {
   ],
 };
 
-export const panel = {
-  title: "Y tú lo ves todo desde un panel",
-  body: "Cada conversación, en qué estado va y qué se respondió. Puedes tomar cualquier hilo cuando quieras: es tu WhatsApp de siempre y el agente se calla ahí mismo.",
-  note: "El panel del enlace es real y está abierto. Míralo antes de hablar conmigo.",
-  image: { src: "/brand/fotos/panel-ejemplo.jpg", w: 1240, h: 779 },
-};
-
-/** Aquí la escala del raíl cambia de horas a días. Es el único sitio. */
+/**
+ * Aquí la escala del raíl cambia de horas a días. Es el único sitio.
+ *
+ * El Día 1 absorbe lo que antes era una sección aparte, "Lo único que necesito
+ * de ti". Decía exactamente lo mismo, a una pantalla de distancia. Va como
+ * enumeración dentro de la frase y no como lista de viñetas, para no
+ * desequilibrar la línea de tiempo frente a los días 3 y 7.
+ */
 export const timeline = {
   title: "Siete días hábiles",
   lead: "Desde que me pasas tu número y tu catálogo hasta que está respondiendo.",
@@ -104,7 +135,7 @@ export const timeline = {
     {
       n: "Día 1",
       title: "Me pasas lo tuyo",
-      body: "Tu número de WhatsApp y tu catálogo: qué vendes, a cuánto, en qué cantidades y qué combina con qué.",
+      body: "Cuatro cosas que ya tienes y ninguna es técnica: el número de WhatsApp que usas con tus clientes, tu catálogo con los precios en pesos, las cantidades por kit (paneles, inversor, baterías) y qué se puede combinar con qué.",
     },
     {
       n: "Día 3",
@@ -116,17 +147,6 @@ export const timeline = {
       title: "Queda instalado",
       body: "Funcionando en tu número. No instalas nada, no aprendes ningún programa y no cambias de herramienta.",
     },
-  ],
-};
-
-export const requirements = {
-  title: "Lo único que necesito de ti",
-  lead: "Cuatro cosas. Ninguna es técnica y todas las tienes ya.",
-  items: [
-    { n: "01", text: "El número de WhatsApp que ya usas con tus clientes" },
-    { n: "02", text: "Tu catálogo con los precios en pesos" },
-    { n: "03", text: "Las cantidades por kit: paneles, inversor, baterías" },
-    { n: "04", text: "Qué se puede combinar con qué" },
   ],
 };
 
@@ -150,14 +170,20 @@ export const fit = {
   },
 };
 
+export const faqTitle = "Lo que siempre me preguntan";
+
+/**
+ * Seis, no nueve. Se quitaron tres que la página ya respondía con las mismas
+ * palabras: de dónde saca los precios (lo dice el Día 1), cuánto tarda (lo dice
+ * la sección entera de los siete días) y si necesitas saber de tecnología (esa
+ * respuesta era idéntica, palabra por palabra, al Día 7).
+ *
+ * Las tres acordadas se quedan: precio, permanencia y no improvisar.
+ */
 export const faqs = [
   {
     q: "¿Tengo que cambiar de número de WhatsApp?",
     a: "No. El agente trabaja sobre el número que ya usas con tus clientes.",
-  },
-  {
-    q: "¿De dónde saca los precios que da?",
-    a: "De tu catálogo. Le pasas qué vendes, a cuánto, en qué cantidades y qué se puede combinar con qué.",
   },
   {
     q: "¿Y si le preguntan algo que no está en mi catálogo?",
@@ -165,23 +191,15 @@ export const faqs = [
   },
   {
     q: "¿Puedo tomar yo una conversación cuando quiera?",
-    a: "Sí, en cualquier momento. Es tu WhatsApp de siempre: el agente deja de responder en ese hilo.",
-  },
-  {
-    q: "¿Cuánto tarda en estar funcionando?",
-    a: "Siete días hábiles desde que me pasas tu número y tu catálogo.",
+    a: "Sí, en cualquier momento. Entras al hilo y el agente deja de responder ahí.",
   },
   {
     q: "¿Y si cambio mis precios o mis productos?",
     a: "Se actualizan. No están escritos a fuego: cuando cambien, me los pasas y responde con los nuevos.",
   },
   {
-    q: "¿Necesito saber de tecnología?",
-    a: "No. No instalas nada, no aprendes ningún programa y no cambias de herramienta.",
-  },
-  {
     q: "¿Cuánto cuesta?",
-    a: "Depende de cuántos productos y combinaciones tenga tu catálogo, porque eso es lo que marca el trabajo de montarlo. Lo vemos en los treinta minutos de llamada, con tu caso delante y sin compromiso.",
+    a: "Depende de cuántos productos y combinaciones tenga tu catálogo, porque eso es lo que marca el trabajo de montarlo. Lo vemos en la llamada, sobre tu catálogo real y sin compromiso.",
   },
   {
     q: "¿Hay permanencia?",

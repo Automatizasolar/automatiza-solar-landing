@@ -63,7 +63,7 @@ export function Conversation() {
             scrollTrigger: {
               trigger: root.current,
               start: "top top",
-              end: "+=3000",
+              end: "+=1900",
               pin: stage.current,
               scrub: 0.7,
               invalidateOnRefresh: true,
@@ -92,7 +92,10 @@ export function Conversation() {
               el,
               { opacity: 0, y: 22, filter: "blur(7px)" },
               { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" },
-              i * 0.55,
+              // El offset es menor que la duración a propósito: con el raspado
+              // más corto los mensajes se pisan un poco, que es como llegan los
+              // WhatsApp de verdad.
+              i * 0.45,
             );
           });
 
@@ -108,7 +111,7 @@ export function Conversation() {
                 return Math.min(0, box.clientHeight - el.scrollHeight);
               },
               ease: "none",
-              duration: items.length * 0.55,
+              duration: items.length * 0.45,
             },
             0,
           );
@@ -117,7 +120,7 @@ export function Conversation() {
             ".payoff",
             { opacity: 0, y: 18 },
             { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" },
-            items.length * 0.55 + 0.2,
+            items.length * 0.45 + 0.2,
           );
         },
       );
@@ -132,14 +135,12 @@ export function Conversation() {
           <div className="conv-grid">
             <div className="conv-head">
               <h2 className="max-w-[18ch] text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.06] font-semibold tracking-[-0.03em] text-balance">
-                Tú estabas dormido. Alguien preguntaba precios.
+                {conversation.heading}
               </h2>
 
-              <p className="mt-6 max-w-[42ch] text-[17px] leading-[1.6] text-[var(--color-ink-muted)]">
-                Esta es una conversación de tres minutos, un domingo por la noche, sin nadie
-                al otro lado del teléfono.
+              <p className="mt-6 max-w-[44ch] text-[17px] leading-[1.6] text-[var(--color-ink-muted)]">
+                {conversation.lead}
               </p>
-
             </div>
 
             <p className="payoff conv-payoff max-w-[42ch] border-l border-[var(--color-solar)] pl-5 text-[17px] leading-[1.6] text-[var(--color-ink)]">
@@ -147,12 +148,24 @@ export function Conversation() {
             </p>
 
             <div className="conv-thread">
-              <div className="mb-4 flex items-center justify-end gap-2 border-b border-[var(--color-rule-soft)] pb-3">
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-solar)]" />
-                <span className="tnum font-[family-name:var(--font-mono)] text-[12px] tracking-[0.06em] text-[var(--color-ink-muted)]">
-                  {hero.clock.day}
-                  {", "}
-                  <span ref={clock}>{conversation.messages[0].at}</span>
+              {/* Un hilo de chat sin participantes es un hilo roto. Y aquí,
+                  además, es donde hay que decir que quien responde es el agente:
+                  es el punto exacto donde se está demostrando. */}
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b border-[var(--color-rule-soft)] pb-3">
+                <span className="text-[14px] font-medium text-[var(--color-ink)]">
+                  {conversation.contact.name}
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-solar)]" />
+                  <span className="text-[12px] font-medium text-[var(--color-solar)]">
+                    {conversation.agentLabel}
+                  </span>
+                  <span className="h-3 w-px bg-[var(--color-rule)]" />
+                  <span className="tnum font-[family-name:var(--font-mono)] text-[12px] tracking-[0.06em] text-[var(--color-ink-faint)]">
+                    {hero.clock.day}
+                    {", "}
+                    <span ref={clock}>{conversation.messages[0].at}</span>
+                  </span>
                 </span>
               </div>
 

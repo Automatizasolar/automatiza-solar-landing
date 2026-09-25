@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   title: "Automatiza Solar | El WhatsApp que no contestas lo contesta tu competencia",
   description:
-    "Un agente que responde al instante sobre el número de WhatsApp que ya usas, califica a quien escribe con tu catálogo y agenda la visita. Siete días hábiles, sin permanencia.",
+    "Agente de atención y ventas por WhatsApp para empresas de energía solar. Responde al instante sobre tu número de siempre, califica con tu catálogo y agenda la visita. Siete días hábiles, sin permanencia.",
   openGraph: {
     title: "El WhatsApp que no contestas lo contesta tu competencia",
     description:
-      "Un agente que responde al instante sobre tu número de siempre, califica y agenda la visita. Siete días hábiles.",
+      "Agente de atención y ventas por WhatsApp para empresas de energía solar. Responde al instante sobre tu número de siempre, califica y agenda la visita.",
     images: ["/brand/og-automatiza-solar.png"],
     url: "https://automatizasolar.com",
     siteName: "Automatiza Solar",
@@ -57,7 +57,7 @@ const jsonLd = {
       "@type": "ProfessionalService",
       name: site.name,
       description:
-        "Agente de WhatsApp para empresas de energía solar: responde al instante, califica con tu catálogo y agenda la visita técnica.",
+        "Agente de atención y ventas por WhatsApp para empresas de energía solar: responde al instante, califica con tu catálogo y agenda la visita técnica.",
       telephone: `+${WHATSAPP}`,
       email: site.email,
       url: "https://automatizasolar.com",

@@ -6,7 +6,7 @@ import { Section, Wrap } from "./ui";
 export function Fit() {
   return (
     <Section hour="18:20">
-      <Wrap className="py-24 lg:py-32">
+      <Wrap className="py-16 lg:py-24">
         <h2 className="reveal max-w-[16ch] text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.06] font-semibold tracking-[-0.03em] text-balance">
           {fit.title}
         </h2>

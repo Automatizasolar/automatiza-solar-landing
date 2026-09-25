@@ -1,5 +1,5 @@
 import { PlusIcon } from "@phosphor-icons/react/dist/ssr";
-import { faqs } from "@/lib/content";
+import { faqs, faqTitle } from "@/lib/content";
 import { Section, Wrap } from "./ui";
 
 /**
@@ -14,10 +14,10 @@ import { Section, Wrap } from "./ui";
 export function Faq() {
   return (
     <Section hour="20:50">
-      <Wrap className="py-24 lg:py-32">
+      <Wrap className="py-16 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:gap-20">
           <h2 className="reveal text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.06] font-semibold tracking-[-0.03em] text-balance lg:sticky lg:top-28 lg:self-start">
-            Lo que siempre me preguntan
+            {faqTitle}
           </h2>
 
           <div className="reveal">

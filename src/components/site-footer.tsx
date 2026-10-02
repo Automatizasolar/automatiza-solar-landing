@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { legal } from "@/lib/content";
 import { cta, site } from "@/lib/site";
 import { Wrap } from "./ui";
@@ -48,7 +49,14 @@ export function SiteFooter() {
         </div>
 
         <p className="mt-12 max-w-[62ch] border-t border-[var(--color-rule-soft)] pt-6 text-[13px] leading-[1.6] text-[var(--color-ink-faint)]">
-          © {new Date().getFullYear()} {site.name}. {legal}
+          © {new Date().getFullYear()} {site.name}. {legal}{" "}
+          <Link
+            href="/privacidad"
+            className="underline decoration-[color-mix(in_oklab,currentColor_40%,transparent)] transition-colors duration-150 hover:text-[var(--color-ink)]"
+          >
+            {cta.privacy}
+          </Link>
+          .
         </p>
       </Wrap>
     </footer>

@@ -16,8 +16,11 @@ type Mark = { hour: string; scale: string; at: number };
  *
  * La escala cambia de HORA a DÍA en la sección de los siete días. Es el único
  * sitio donde el eje del tiempo cambia de unidad, y se anuncia.
+ *
+ * En el funnel la esquina de abajo es de la barra de reserva, así que la hora
+ * del móvil se apaga (`mobileClock={false}`).
  */
-export function HourRail() {
+export function HourRail({ mobileClock = true }: { mobileClock?: boolean }) {
   const railRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
   const [marks, setMarks] = useState<Mark[]>([]);
@@ -132,17 +135,19 @@ export function HourRail() {
       </div>
 
       {/* Móvil: la hora sigue presente, sin raíl. */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed bottom-4 left-4 z-30 flex items-center gap-2 rounded-full border border-[var(--color-rule)] bg-[color-mix(in_oklab,var(--color-ground)_82%,transparent)] px-3 py-1.5 backdrop-blur-md lg:hidden"
-      >
-        <span className="relative flex h-1.5 w-1.5">
-          <span className="absolute inset-0 rounded-full bg-[var(--color-solar)]" />
-        </span>
-        <span className="tnum font-[family-name:var(--font-mono)] text-[11px] text-[var(--color-ink-muted)]">
-          {current?.hour ?? "22:14"}
-        </span>
-      </div>
+      {mobileClock && (
+        <div
+          aria-hidden
+          className="pointer-events-none fixed bottom-4 left-4 z-30 flex items-center gap-2 rounded-full border border-[var(--color-rule)] bg-[color-mix(in_oklab,var(--color-ground)_82%,transparent)] px-3 py-1.5 backdrop-blur-md lg:hidden"
+        >
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inset-0 rounded-full bg-[var(--color-solar)]" />
+          </span>
+          <span className="tnum font-[family-name:var(--font-mono)] text-[11px] text-[var(--color-ink-muted)]">
+            {current?.hour ?? "22:14"}
+          </span>
+        </div>
+      )}
     </>
   );
 }

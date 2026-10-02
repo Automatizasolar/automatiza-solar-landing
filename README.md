@@ -22,6 +22,8 @@ Otros comandos: `pnpm build` (build de producción), `pnpm lint`.
 ```
 src/app/layout.tsx        fuentes, metadatos, datos estructurados
 src/app/page.tsx          la jornada completa, en orden
+src/app/llamada/          el funnel de los anuncios (ver abajo)
+src/app/privacidad/       política de tratamiento de datos (texto en src/lib/privacy.ts)
 src/app/globals.css       tokens del mundo visual y estado base del movimiento
 src/lib/site.ts           contacto y enlaces. EL NÚMERO SE CAMBIA AQUÍ
 src/lib/content.ts        TODO el texto visible de la página
@@ -30,6 +32,17 @@ public/brand/             logos, favicons y fotos
 PRODUCT.md                qué es el negocio y qué no se puede inventar
 DESIGN.md                 el mundo visual y por qué cada decisión está donde está
 ```
+
+## El funnel de los anuncios: /llamada
+
+Destino de las campañas de Meta. Es la home sin salidas: sin menú, sin WhatsApp ni correo, y
+todos los botones bajan a la agenda, que es el Calendly embebido al final (`agenda.tsx`, un
+iframe; la CSP de `vercel.json` le abre `frame-src`). No se indexa.
+
+- El titular tiene que coincidir palabra por palabra con el del anuncio.
+- Los datos que se piden al reservar (WhatsApp, web o Instagram, casilla de consentimiento)
+  se configuran en el evento de Calendly, no aquí.
+- El VSL va en el hueco marcado en `src/app/llamada/page.tsx`, detrás del hero.
 
 ## Cambiar cosas
 

@@ -16,20 +16,22 @@ const base =
   "transition-[transform,background-color,border-color,color] duration-150 ease-[var(--ease-out-strong)] " +
   "active:scale-[0.97]";
 
+/** `external={false}` para los anclas de la misma página, que no abren pestaña. */
 export function ActionPrimary({
   href,
   children,
   icon,
+  external = true,
 }: {
   href: string;
   children: ReactNode;
   icon?: ReactNode;
+  external?: boolean;
 }) {
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(external && { target: "_blank", rel: "noopener noreferrer" })}
       className={`${base} bg-[var(--color-solar)] text-white hover:bg-[var(--color-solar-deep)]`}
     >
       {icon}

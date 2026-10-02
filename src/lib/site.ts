@@ -26,4 +26,26 @@ export const cta = {
   call: "Agendar 30 minutos",
   panel: "Ver el panel",
   mail: "Escribirme por correo",
+  book: "Reservar llamada de 30 minutos",
+  bookShort: "Reservar",
+  privacy: "Política de tratamiento de datos",
 } as const;
+
+/**
+ * El funnel de los anuncios vive en /llamada. Ahí no hay enlaces de salida:
+ * todos los botones bajan a la agenda, que es Calendly embebido en la página.
+ */
+export const funnel = {
+  agendaId: "agenda",
+  agendaHref: "#agenda",
+  calendlyEmbed(host: string) {
+    const params = new URLSearchParams({
+      embed_domain: host,
+      embed_type: "Inline",
+      hide_gdpr_banner: "1",
+      hide_event_type_details: "1",
+      primary_color: "0f7355",
+    });
+    return `${site.calendly}?${params}`;
+  },
+};

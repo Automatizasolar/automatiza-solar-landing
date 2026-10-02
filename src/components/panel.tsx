@@ -12,8 +12,11 @@ import { Section, Wrap } from "./ui";
  * En la sección del panel va una captura del panel, no una foto de archivo.
  * Lo que convence aquí es el producto. La captura se recorta dura contra el
  * campo oscuro en vez de flotar centrada con sombra.
+ *
+ * En el funnel va sin el enlace al panel (`link={false}`): ningún clic pagado
+ * sale de la página. La captura se queda como prueba.
  */
-export function Panel() {
+export function Panel({ link = true }: { link?: boolean }) {
   return (
     <Section hour="07:40" className="overflow-clip">
       <Wrap className="py-16 lg:py-24">
@@ -25,19 +28,23 @@ export function Panel() {
             <p className="mt-6 max-w-[44ch] text-[17px] leading-[1.6] text-[var(--color-ink-muted)]">
               {panel.body}
             </p>
-            <p className="mt-5 max-w-[44ch] text-[15px] leading-[1.6] text-[var(--color-ink-faint)]">
-              {panel.note}
-            </p>
+            {link && (
+              <>
+                <p className="mt-5 max-w-[44ch] text-[15px] leading-[1.6] text-[var(--color-ink-faint)]">
+                  {panel.note}
+                </p>
 
-            <a
-              href={site.panel}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-1.5 text-[16px] font-medium text-[var(--color-solar)] underline decoration-[color-mix(in_oklab,var(--color-solar)_40%,transparent)] transition-[color,text-decoration-color] duration-150 hover:decoration-[var(--color-solar)]"
-            >
-              {cta.panel}
-              <ArrowUpRightIcon size={16} weight="bold" />
-            </a>
+                <a
+                  href={site.panel}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 inline-flex items-center gap-1.5 text-[16px] font-medium text-[var(--color-solar)] underline decoration-[color-mix(in_oklab,var(--color-solar)_40%,transparent)] transition-[color,text-decoration-color] duration-150 hover:decoration-[var(--color-solar)]"
+                >
+                  {cta.panel}
+                  <ArrowUpRightIcon size={16} weight="bold" />
+                </a>
+              </>
+            )}
           </div>
 
           {/* Recorte duro: la captura se sale del marco por la derecha. */}

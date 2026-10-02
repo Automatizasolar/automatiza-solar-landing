@@ -214,3 +214,38 @@ export const closing = {
 
 export const legal =
   "La conversación de esta página es una recreación con datos ficticios. La foto de perfil es de banco de imágenes y no corresponde a esa persona.";
+
+/**
+ * El funnel de los anuncios (/llamada). Las seis piezas, en orden: llamada al
+ * nicho, titular de resultado, VSL, demo, formulario y calendario. El titular
+ * es el mismo de la página principal y tiene que coincidir palabra por palabra
+ * con el del anuncio.
+ *
+ * Sin preguntas de filtro por ahora: los datos de contacto se piden en el
+ * propio Calendly. Las dos preguntas de filtro están escritas en el cuaderno y
+ * se activan en Calendly cuando sobren reservas de mala calidad.
+ */
+export const funnelCopy = {
+  niche: "Empresas de paneles solares en Medellín",
+  nicheNote: "Si la empresa es tuya, esto es para ti.",
+  ctaNote: "Sin compromiso. Si veo que no te sirve, te lo digo en esa misma llamada.",
+  about: {
+    title: "Con quién vas a hablar",
+    name: "Alejandro Piedrahita",
+    place: "Medellín",
+    body: "Construyo e instalo el agente yo mismo, y en la llamada estoy yo: no hay vendedor ni equipo de cuentas en el medio.",
+    // Prueba social: va aquí el primer caso real, con nombre y permiso.
+    // Hasta que exista, se dice tal cual. No se inventa.
+    honest:
+      "Todavía no tengo casos con nombre y cifras para enseñarte. Lo que sí tengo es el agente construido y funcionando: en la llamada lo vemos con tu catálogo delante.",
+    photo: { src: "/brand/fotos/alejandro.jpg", w: 640, h: 640 },
+  },
+  agenda: {
+    title: closing.title,
+    body: "La diferencia es quién contesta. Elige día y hora y en treinta minutos te digo si esto te sirve, con tu catálogo delante. No tienes que preparar nada.",
+    privacyNote: "Tus datos se usan solo para esta llamada.",
+  },
+  bar: { title: "Llamada de 30 minutos", note: "Sin compromiso" },
+  legal:
+    "La conversación de esta página es una recreación con datos ficticios. La foto de perfil del cliente es de banco de imágenes y no corresponde a esa persona.",
+};

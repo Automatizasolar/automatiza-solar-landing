@@ -42,7 +42,9 @@ export function Hero({ funnel = false }: { funnel?: boolean }) {
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
       if (funnel) tl.from(".hero-niche", { opacity: 0, y: 10, duration: 0.7 });
       tl.from(".hero-line > span", { yPercent: 106, duration: 1.15, stagger: 0.09 }, funnel ? 0.12 : 0)
-        .from(".hero-sub", { opacity: 0, y: 14, duration: 0.7 }, "-=0.74")
+        // Solo se desliza: es el elemento más grande del primer pantallazo y, si
+        // entrara desde opacidad 0, retrasaría la carga que mide Google (LCP).
+        .from(".hero-sub", { y: 14, duration: 0.7 }, "-=0.74")
         .from(".hero-act", { opacity: 0, y: 14, duration: 0.7, stagger: 0.07 }, "-=0.62")
         .from(photo.current, { opacity: 0, scale: 1.06, duration: 1.5 }, 0.15);
 

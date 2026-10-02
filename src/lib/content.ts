@@ -235,13 +235,43 @@ export const funnelCopy = {
     honest:
       "Todavía no tengo casos con nombre y cifras para enseñarte. Lo que sí tengo es el agente construido y funcionando: en la llamada lo vemos con tu catálogo delante.",
     photo: { src: "/brand/fotos/alejandro.jpg", w: 640, h: 640 },
+    // El botón de mitad de página: después de la prueba, como en la landing de
+    // ejemplo del programa. Lleva a la misma agenda que todos los demás.
+    ctaNote: "Treinta minutos, gratis. Sales sabiendo si esto te sirve o no.",
+  },
+  /**
+   * Responde a «¿qué es esto exactamente?» con la oferta del cuaderno (Worksheet
+   * de oferta): piloto acotado, siete días hábiles y la garantía de los 15 días.
+   * Sin precio, que se ve en la llamada.
+   */
+  pilot: {
+    title: "Se empieza por un piloto",
+    lead: "Nadie firma un proyecto grande con alguien a quien acaba de conocer. Yo tampoco lo haría.",
+    items: [
+      {
+        title: "En tu WhatsApp de siempre",
+        body: "Con tu número, tu catálogo y tus precios. No cambias de herramienta ni de número.",
+      },
+      {
+        title: "Funcionando en siete días hábiles",
+        body: "Lo pruebas tú antes de que le responda a tus clientes, y me pides los cambios.",
+      },
+      {
+        title: "Con garantía",
+        body: "Si en 15 días el agente no te ha agendado al menos una visita, te devuelvo el dinero.",
+      },
+      {
+        title: "Y si no encaja, se queda ahí",
+        body: "Sin permanencia. Ves funcionando lo que contrataste antes de hablar de nada más grande.",
+      },
+    ],
   },
   agenda: {
     title: closing.title,
     body: "La diferencia es quién contesta. Elige día y hora y en treinta minutos te digo si esto te sirve, con tu catálogo delante. No tienes que preparar nada.",
     privacyNote: "Tus datos se usan solo para esta llamada.",
   },
-  bar: { title: "Llamada de 30 minutos", note: "Sin compromiso" },
+  bar: { title: "Llamada gratis de 30 minutos", note: "Sin compromiso" },
   legal:
     "La conversación de esta página es una recreación con datos ficticios. La foto de perfil del cliente es de banco de imágenes y no corresponde a esa persona.",
 };

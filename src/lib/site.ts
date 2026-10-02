@@ -22,8 +22,9 @@ export const cta = {
   whatsapp: "Escríbeme por WhatsApp",
   call: "Agendar 30 minutos",
   panel: "Ver el panel",
-  book: "Reservar llamada de 30 minutos",
+  book: "Reservar llamada gratis de 30 minutos",
   bookShort: "Reservar",
+  bookFit: "Quiero ver si encaja en mi empresa",
   privacy: "Política de tratamiento de datos",
 } as const;
 

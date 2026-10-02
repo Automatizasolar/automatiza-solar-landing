@@ -9,6 +9,7 @@ import { Arrivals } from "@/components/arrivals";
 import { SevenDays } from "@/components/seven-days";
 import { Fit } from "@/components/fit";
 import { About } from "@/components/about";
+import { Pilot } from "@/components/pilot";
 import { Faq } from "@/components/faq";
 import { Agenda } from "@/components/agenda";
 import { BookBar } from "@/components/book-bar";
@@ -36,6 +37,7 @@ export default function Page() {
         <SevenDays />
         <Fit />
         <About />
+        <Pilot />
         <Faq />
         <Agenda />
       </main>

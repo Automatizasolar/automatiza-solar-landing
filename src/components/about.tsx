@@ -1,11 +1,16 @@
 import Image from "next/image";
+import { CalendarBlankIcon } from "@phosphor-icons/react/dist/ssr";
 import { funnelCopy } from "@/lib/content";
-import { Section, Wrap } from "./ui";
+import { cta, funnel } from "@/lib/site";
+import { ActionPrimary, Section, Wrap } from "./ui";
 
 /**
  * Responde a "¿puedo fiarme de esta persona?". Cara, nombre y una frase
  * honesta. El hueco de la prueba social se queda dicho en voz alta hasta que
  * haya un primer caso real con permiso: no se inventa ninguno.
+ *
+ * Cierra con el botón de mitad de página: después de la prueba es cuando más
+ * gente decide, y no tiene que bajar hasta la agenda para encontrarlo.
  */
 export function About() {
   const { about } = funnelCopy;
@@ -41,6 +46,17 @@ export function About() {
               {about.honest}
             </p>
           </div>
+        </div>
+
+        <div className="reveal mt-12">
+          <ActionPrimary
+            href={funnel.agendaHref}
+            external={false}
+            icon={<CalendarBlankIcon size={18} weight="bold" />}
+          >
+            {cta.bookFit}
+          </ActionPrimary>
+          <p className="mt-4 text-[14px] leading-[1.5] text-[var(--color-ink-faint)]">{about.ctaNote}</p>
         </div>
       </Wrap>
     </Section>

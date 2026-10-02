@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { preconnect } from "react-dom";
 import { funnelCopy } from "@/lib/content";
 import { trackSchedule } from "@/lib/pixel";
 import { funnel } from "@/lib/site";
@@ -17,9 +18,14 @@ import { Section, Wrap } from "./ui";
  * permite. La altura la manda Calendly por postMessage cuando cambia de paso;
  * hasta entonces se reserva una altura que cabe en móvil sin scroll interno.
  *
- * El src se escribe al montar, directo sobre el nodo, porque Calendly necesita
- * saber en qué dominio está embebido y en una preview de Vercel no es
- * automatizasolar.com.
+ * El src se escribe directo sobre el nodo porque Calendly necesita saber en qué
+ * dominio está embebido, y en una preview de Vercel no es automatizasolar.com.
+ *
+ * Calendly es pesado (su app y sus filtros anti-bots tardan segundos en
+ * arrancar), así que se le adelanta el trabajo: conexión abierta desde el
+ * principio, y el iframe empieza a cargar en cuanto la página terminó lo suyo,
+ * no cuando la persona llega abajo. Mientras arranca se ve un esqueleto del
+ * calendario en vez de un hueco en blanco.
  *
  * Por el mismo canal Calendly avisa de la reserva confirmada: ahí se manda el
  * Schedule al pixel (solo si la persona aceptó las cookies).
@@ -27,12 +33,24 @@ import { Section, Wrap } from "./ui";
 export function Agenda() {
   const frame = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState<number>();
+  const [ready, setReady] = useState(false);
+
+  preconnect("https://calendly.com");
+  preconnect("https://assets.calendly.com");
 
   useEffect(() => {
-    if (frame.current) frame.current.src = funnel.calendlyEmbed(window.location.host);
+    // Después del load: así no le quita ancho de banda al primer pantallazo.
+    const start = () => {
+      if (frame.current && !frame.current.src) {
+        frame.current.src = funnel.calendlyEmbed(window.location.host);
+      }
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
 
     const onMessage = (e: MessageEvent) => {
       if (e.origin !== "https://calendly.com") return;
+      if (typeof e.data?.event === "string" && e.data.event.startsWith("calendly.")) setReady(true);
       if (e.data?.event === "calendly.page_height") {
         const h = parseInt(e.data.payload?.height, 10);
         if (h > 0) setHeight(h);
@@ -42,7 +60,10 @@ export function Agenda() {
       }
     };
     window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
+    return () => {
+      window.removeEventListener("load", start);
+      window.removeEventListener("message", onMessage);
+    };
   }, []);
 
   return (
@@ -57,14 +78,14 @@ export function Agenda() {
           </p>
         </div>
 
-        <div className="mt-10 -mx-5 overflow-hidden border-y border-[var(--color-rule)] bg-[var(--color-raised)] sm:mx-0 sm:rounded-[14px] sm:border">
+        <div className="relative mt-10 -mx-5 overflow-hidden border-y border-[var(--color-rule)] bg-[var(--color-raised)] sm:mx-0 sm:rounded-[14px] sm:border">
           <iframe
             ref={frame}
             title="Elige día y hora para la llamada"
-            loading="lazy"
             className="block w-full"
-            style={{ height: height ?? 1060 }}
+            style={{ height: height ?? 700 }}
           />
+          {!ready && <CalendarSkeleton />}
         </div>
 
         <p className="mt-5 text-[14px] leading-[1.5] text-[var(--color-ink-faint)]">
@@ -72,5 +93,26 @@ export function Agenda() {
         </p>
       </Wrap>
     </Section>
+  );
+}
+
+/** Lo que se ve mientras Calendly arranca: la forma del calendario y qué está pasando. */
+function CalendarSkeleton() {
+  return (
+    <div
+      aria-hidden
+      className="absolute inset-0 flex flex-col items-center bg-[var(--color-raised)] px-6 pt-10"
+    >
+      <p className="text-[15px] font-medium text-[var(--color-ink-muted)]">Cargando el calendario…</p>
+      <div className="mt-8 grid w-full max-w-[22rem] grid-cols-7 gap-3">
+        {Array.from({ length: 35 }, (_, i) => (
+          <span
+            key={i}
+            className="aspect-square animate-pulse rounded-full bg-[var(--color-raised-2)]"
+            style={{ animationDelay: `${(i % 7) * 80}ms` }}
+          />
+        ))}
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { funnelCopy } from "@/lib/content";
 import { site } from "@/lib/site";
+import { CookieSettingsButton } from "./cookie-consent";
 import { PrivacyButton } from "./privacy";
 import { Wrap } from "./ui";
 
@@ -18,7 +19,7 @@ export function FunnelFooter() {
         />
         <p className="mt-8 max-w-[62ch] border-t border-[var(--color-rule-soft)] pt-6 text-[13px] leading-[1.6] text-[var(--color-ink-faint)]">
           © {new Date().getFullYear()} {site.name}. {funnelCopy.legal}{" "}
-          <PrivacyButton />.
+          <PrivacyButton /> · <CookieSettingsButton />.
         </p>
       </Wrap>
     </footer>

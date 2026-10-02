@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, JetBrains_Mono } from "next/font/google";
 import { SmoothScroll } from "@/components/smooth-scroll";
-import { MetaPixel } from "@/components/meta-pixel";
+import { CookieConsent } from "@/components/cookie-consent";
 import { WHATSAPP, site } from "@/lib/site";
 import { faqs } from "@/lib/content";
 import "./globals.css";
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <SmoothScroll />
         {children}
-        <MetaPixel />
+        <CookieConsent />
         <script
           type="application/ld+json"
           // Datos estructurados. Contenido propio, no entrada de usuario.

@@ -4,7 +4,7 @@ import { site } from "./site";
  * Política de tratamiento de datos (Ley 1581 de 2012 y Decreto 1377 de 2013).
  * Cubre lo que recoge la web: la reserva de la llamada en Calendly. Es un
  * borrador práctico, no asesoría legal: se valida con un profesional antes de
- * lanzar anuncios. Incluye el pixel de Meta, que carga al abrir la página.
+ * lanzar anuncios. Incluye el pixel de Meta, que solo carga con consentimiento.
  */
 export const privacy = {
   title: "Política de tratamiento de datos personales",
@@ -37,7 +37,7 @@ export const privacy = {
     {
       h: "Cookies y medición de anuncios",
       p: [
-        "La página usa el pixel de Meta para saber qué anuncios traen visitas y reservas. Meta recibe que visitaste la página y, si reservas, que hubo una reserva, y lo guarda con sus cookies. Si no quieres que se mida, puedes bloquear las cookies de terceros en la configuración de tu navegador; la página funciona igual.",
+        "Si aceptas las cookies, la página carga el pixel de Meta para saber qué anuncios traen visitas y reservas. Meta recibe que visitaste la página y, si reservas, que hubo una reserva. Si no aceptas, el pixel no se carga y la página funciona igual. Puedes cambiar tu decisión cuando quieras en «Preferencias de cookies», al pie de la página.",
       ],
     },
     {

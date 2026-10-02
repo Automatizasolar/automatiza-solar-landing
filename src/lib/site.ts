@@ -15,9 +15,6 @@ export const site = {
   panel: "https://automatiza-solar-demo.vercel.app",
   whatsappHref: `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
   whatsappPretty: "+57 322 327 5495",
-  mailtoHref: `mailto:piedrahita@automatizasolar.com?subject=${encodeURIComponent(
-    "Agente de WhatsApp para mi negocio solar",
-  )}`,
 } as const;
 
 /** Etiquetas de acción. Una por intención, repetida igual en toda la página. */
@@ -25,15 +22,14 @@ export const cta = {
   whatsapp: "Escríbeme por WhatsApp",
   call: "Agendar 30 minutos",
   panel: "Ver el panel",
-  mail: "Escribirme por correo",
   book: "Reservar llamada de 30 minutos",
   bookShort: "Reservar",
   privacy: "Política de tratamiento de datos",
 } as const;
 
 /**
- * El funnel de los anuncios vive en /llamada. Ahí no hay enlaces de salida:
- * todos los botones bajan a la agenda, que es Calendly embebido en la página.
+ * La web es el funnel de los anuncios. No hay enlaces de salida: todos los
+ * botones bajan a la agenda, que es Calendly embebido en la página.
  */
 export const funnel = {
   agendaId: "agenda",

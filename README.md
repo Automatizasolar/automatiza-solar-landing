@@ -21,8 +21,7 @@ Otros comandos: `pnpm build` (build de producción), `pnpm lint`.
 
 ```
 src/app/layout.tsx        fuentes, metadatos, datos estructurados
-src/app/page.tsx          la jornada completa, en orden
-src/app/llamada/          el funnel de los anuncios (ver abajo)
+src/app/page.tsx          la home, que es el funnel de los anuncios (ver abajo)
 src/app/privacidad/       política de tratamiento de datos (texto en src/lib/privacy.ts)
 src/app/globals.css       tokens del mundo visual y estado base del movimiento
 src/lib/site.ts           contacto y enlaces. EL NÚMERO SE CAMBIA AQUÍ
@@ -33,22 +32,23 @@ PRODUCT.md                qué es el negocio y qué no se puede inventar
 DESIGN.md                 el mundo visual y por qué cada decisión está donde está
 ```
 
-## El funnel de los anuncios: /llamada
+## La home es el funnel de los anuncios
 
-Destino de las campañas de Meta. Es la home sin salidas: sin menú, sin WhatsApp ni correo, y
-todos los botones bajan a la agenda, que es el Calendly embebido al final (`agenda.tsx`, un
-iframe; la CSP de `vercel.json` le abre `frame-src`). No se indexa.
+Destino de las campañas de Meta: sin menú, sin WhatsApp ni correo, y todos los botones bajan a
+la agenda, que es el Calendly embebido al final (`agenda.tsx`, un
+iframe; la CSP de `vercel.json` le abre `frame-src`). `/llamada`, donde vivió al principio,
+redirige a la home.
 
 - El titular tiene que coincidir palabra por palabra con el del anuncio.
 - Los datos que se piden al reservar (WhatsApp, web o Instagram, casilla de consentimiento)
   se configuran en el evento de Calendly, no aquí.
-- El VSL va en el hueco marcado en `src/app/llamada/page.tsx`, detrás del hero.
+- El VSL va en el hueco marcado en `src/app/page.tsx`, detrás del hero.
 
 ## Cambiar cosas
 
 - **Textos:** todos en `src/lib/content.ts`. No hay copy suelto en los componentes.
 - **Número de WhatsApp:** una sola línea, `WHATSAPP` en `src/lib/site.ts`, en formato
-  internacional y sin signos. De ahí salen los cuatro botones, el pie y el JSON-LD.
+  internacional y sin signos. Hoy solo lo usan los datos estructurados (JSON-LD) y la política de datos.
 - **Fotos:** sustituir el fichero en `public/brand/fotos/` conservando nombre y proporción.
   El origen de cada una está en `public/brand/CREDITOS.md`.
 - **Colores y tipografía:** los tokens están en `src/app/globals.css`. Antes de tocar el

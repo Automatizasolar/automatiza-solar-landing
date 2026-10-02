@@ -1,42 +1,47 @@
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
+import { FunnelHeader } from "@/components/funnel-header";
+import { FunnelFooter } from "@/components/funnel-footer";
 import { HourRail } from "@/components/hour-rail";
 import { Hero } from "@/components/hero";
 import { Conversation } from "@/components/conversation";
-import { Arrivals } from "@/components/arrivals";
-import { AgentStack } from "@/components/agent-stack";
 import { Panel } from "@/components/panel";
+import { AgentStack } from "@/components/agent-stack";
+import { Arrivals } from "@/components/arrivals";
 import { SevenDays } from "@/components/seven-days";
 import { Fit } from "@/components/fit";
+import { About } from "@/components/about";
 import { Faq } from "@/components/faq";
-import { Closing } from "@/components/closing";
+import { Agenda } from "@/components/agenda";
+import { BookBar } from "@/components/book-bar";
 
 /**
- * Una jornada completa, de domingo 22:14 a lunes 22:14.
- * El scroll es el paso del tiempo y el raíl de la izquierda lo mide.
+ * La web es el funnel de los anuncios: sin menú ni salidas. Las seis piezas,
+ * en orden: llamada al nicho y titular (hero), VSL, demo (la conversación y el
+ * panel), y el formulario con el calendario al final (agenda). Lo de en medio
+ * responde las seis preguntas con las que llega el dueño.
  */
 export default function Page() {
   return (
     <>
       <span id="top" />
-      <SiteHeader />
-      <HourRail />
+      <FunnelHeader />
+      <HourRail mobileClock={false} />
 
       <main>
-        <Hero />
+        <Hero funnel />
+        {/* Pieza 3 · VSL: entra aquí cuando esté grabado (lección 6). */}
         <Conversation />
-        {/* Segunda demo, a las 07:40: recoge justo donde lo deja el remate de
-            la conversación. */}
-        <Panel />
+        <Panel link={false} />
         <AgentStack />
         <Arrivals />
         <SevenDays />
         <Fit />
+        <About />
         <Faq />
-        <Closing />
+        <Agenda />
       </main>
 
-      <SiteFooter />
+      <FunnelFooter />
+      <BookBar />
     </>
   );
 }

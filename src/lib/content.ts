@@ -212,14 +212,10 @@ export const closing = {
   body: "La diferencia es quién contesta. Cuéntame qué vendes y en treinta minutos te digo si esto te sirve, con tu catálogo delante.",
 };
 
-export const legal =
-  "La conversación de esta página es una recreación con datos ficticios. La foto de perfil es de banco de imágenes y no corresponde a esa persona.";
-
 /**
- * El funnel de los anuncios (/llamada). Las seis piezas, en orden: llamada al
- * nicho, titular de resultado, VSL, demo, formulario y calendario. El titular
- * es el mismo de la página principal y tiene que coincidir palabra por palabra
- * con el del anuncio.
+ * El funnel de los anuncios, que es la propia home. Las seis piezas, en orden:
+ * llamada al nicho, titular de resultado, VSL, demo, formulario y calendario.
+ * El titular tiene que coincidir palabra por palabra con el del anuncio.
  *
  * Sin preguntas de filtro por ahora: los datos de contacto se piden en el
  * propio Calendly. Las dos preguntas de filtro están escritas en el cuaderno y

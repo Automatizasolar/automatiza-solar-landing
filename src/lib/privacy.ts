@@ -4,7 +4,7 @@ import { site } from "./site";
  * Política de tratamiento de datos (Ley 1581 de 2012 y Decreto 1377 de 2013).
  * Cubre lo que recoge la web: la reserva de la llamada en Calendly. Es un
  * borrador práctico, no asesoría legal: se valida con un profesional antes de
- * lanzar anuncios, y se amplía cuando entre el pixel de Meta.
+ * lanzar anuncios. Incluye el pixel de Meta, que solo carga con consentimiento.
  */
 export const privacy = {
   title: "Política de tratamiento de datos personales",
@@ -32,6 +32,12 @@ export const privacy = {
       h: "Quién más los toca",
       p: [
         "La agenda funciona con Calendly, que guarda la reserva por encargo mío, y la web está alojada en Vercel. Los dos tienen sus servidores fuera de Colombia. Al reservar autorizas que tus datos se guarden ahí con esta única finalidad.",
+      ],
+    },
+    {
+      h: "Cookies y medición de anuncios",
+      p: [
+        "Si aceptas las cookies, la página carga el pixel de Meta para saber qué anuncios traen visitas y reservas. Meta recibe que visitaste la página y, si reservas, que hubo una reserva. Si no aceptas, el pixel no se carga y la página funciona igual. Puedes cambiar tu decisión cuando quieras en «Preferencias de cookies», al pie de la página.",
       ],
     },
     {

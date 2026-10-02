@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { funnelCopy } from "@/lib/content";
+import { trackSchedule } from "@/lib/pixel";
 import { funnel } from "@/lib/site";
 import { PrivacyButton } from "./privacy";
 import { Section, Wrap } from "./ui";
@@ -19,6 +20,9 @@ import { Section, Wrap } from "./ui";
  * El src se escribe al montar, directo sobre el nodo, porque Calendly necesita
  * saber en qué dominio está embebido y en una preview de Vercel no es
  * automatizasolar.com.
+ *
+ * Por el mismo canal Calendly avisa de la reserva confirmada: ahí se manda el
+ * Schedule al pixel (solo si la persona aceptó las cookies).
  */
 export function Agenda() {
   const frame = useRef<HTMLIFrameElement>(null);
@@ -32,6 +36,9 @@ export function Agenda() {
       if (e.data?.event === "calendly.page_height") {
         const h = parseInt(e.data.payload?.height, 10);
         if (h > 0) setHeight(h);
+      }
+      if (e.data?.event === "calendly.event_scheduled") {
+        trackSchedule(e.data.payload?.invitee?.uri);
       }
     };
     window.addEventListener("message", onMessage);

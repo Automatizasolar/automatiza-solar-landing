@@ -1,5 +1,6 @@
 /**
- * Pixel de Meta (conjunto de datos «Automatiza Solar Web»). Mide dos cosas:
+ * Pixel de Meta (conjunto de datos «Web» del portfolio Automatiza Solar,
+ * conectado a la cuenta publicitaria Automatiza Solar). Mide dos cosas:
  * la visita (PageView) y la reserva confirmada en Calendly (Schedule), que es
  * la conversión para la que optimiza la campaña.
  *
@@ -7,7 +8,7 @@
  * pide la política de datos y lo que dice el aviso. El ID no es un secreto,
  * viaja en la propia página.
  */
-export const META_PIXEL_ID = "1781780012699165";
+export const META_PIXEL_ID = "994422470343287";
 
 type Fbq = {
   (...args: unknown[]): void;

@@ -43,7 +43,7 @@ redirige a la home.
 - Los datos que se piden al reservar (WhatsApp, web o Instagram, casilla de consentimiento)
   se configuran en el evento de Calendly, no aquí.
 - El VSL va en el hueco marcado en `src/app/page.tsx`, detrás del hero.
-- **Pixel de Meta** (`src/lib/pixel.ts`, conjunto de datos «Automatiza Solar Web»): PageView al entrar y
+- **Pixel de Meta** (`src/lib/pixel.ts`, conjunto de datos «Web» del portfolio Automatiza Solar): PageView al entrar y
   Schedule cuando Calendly confirma la reserva. No carga nada hasta que se aceptan las cookies
   (`cookie-consent.tsx`); la CSP le abre `connect.facebook.net` y `www.facebook.com`.
 

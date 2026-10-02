@@ -44,8 +44,9 @@ redirige a la home.
   se configuran en el evento de Calendly, no aquí.
 - El VSL va en el hueco marcado en `src/app/page.tsx`, detrás del hero.
 - **Pixel de Meta** (`src/lib/pixel.ts`, conjunto de datos «Automatiza Solar Web»): PageView al entrar y
-  Schedule cuando Calendly confirma la reserva. No carga nada hasta que se aceptan las cookies
-  (`cookie-consent.tsx`); la CSP le abre `connect.facebook.net` y `www.facebook.com`.
+  Schedule cuando Calendly confirma la reserva. Carga al abrir la página, sin aviso de cookies
+  (`meta-pixel.tsx`, decisión del negocio); la CSP le abre `connect.facebook.net` y
+  `www.facebook.com`.
 
 ## Cambiar cosas
 
@@ -91,7 +92,7 @@ ningún contenido escondido detrás de una animación que no corre.
 ## Credenciales
 
 **No hay.** La página no tiene backend ni formularios, así que no hay `.env` ni `.env.example`.
-Las únicas cookies son las del pixel de Meta, y solo con consentimiento. El ID del pixel no es
+Las únicas cookies son las del pixel de Meta. El ID del pixel no es
 un secreto: viaja en la propia página. Si algún día se añade la API de conversiones, su token sí
 lo es y va en las variables de entorno de Vercel, nunca en el repo.
 

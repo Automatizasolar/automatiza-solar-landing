@@ -22,7 +22,7 @@ import { Section, Wrap } from "./ui";
  * automatizasolar.com.
  *
  * Por el mismo canal Calendly avisa de la reserva confirmada: ahí se manda el
- * Schedule al pixel (solo si la persona aceptó las cookies).
+ * Schedule al pixel.
  */
 export function Agenda() {
   const frame = useRef<HTMLIFrameElement>(null);

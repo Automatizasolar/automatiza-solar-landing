@@ -3,9 +3,9 @@
  * la visita (PageView) y la reserva confirmada en Calendly (Schedule), que es
  * la conversión para la que optimiza la campaña.
  *
- * No se carga nada de Meta hasta que la persona acepta las cookies: es lo que
- * pide la política de datos y lo que dice el aviso. El ID no es un secreto,
- * viaja en la propia página.
+ * Se carga en cuanto se abre la página, sin aviso de cookies: decisión del
+ * negocio para que Meta reciba todas las visitas. La política de datos lo
+ * explica. El ID no es un secreto, viaja en la propia página.
  */
 export const META_PIXEL_ID = "1781780012699165";
 
@@ -25,47 +25,9 @@ declare global {
   }
 }
 
-export type Consent = "granted" | "denied";
-
-const KEY = "as-cookies";
-const CHANGE = "as-cookies-change";
-
-/** El almacenamiento puede no existir (modo privado, bloqueo): sin decisión, no hay pixel. */
-export function readConsent(): Consent | null {
-  try {
-    const v = localStorage.getItem(KEY);
-    return v === "granted" || v === "denied" ? v : null;
-  } catch {
-    return null;
-  }
-}
-
-export function saveConsent(value: Consent | null) {
-  try {
-    if (value) localStorage.setItem(KEY, value);
-    else localStorage.removeItem(KEY);
-  } catch {
-    // Sin almacenamiento la decisión dura lo que dura la página.
-  }
-  if (value !== "granted") window.fbq?.("consent", "revoke");
-  window.dispatchEvent(new Event(CHANGE));
-}
-
-export function onConsentChange(cb: () => void) {
-  window.addEventListener(CHANGE, cb);
-  window.addEventListener("storage", cb);
-  return () => {
-    window.removeEventListener(CHANGE, cb);
-    window.removeEventListener("storage", cb);
-  };
-}
-
-/** El fragmento oficial de Meta, sin la etiqueta <noscript>: sin JS no hay forma de aceptar. */
+/** El fragmento oficial de Meta, escrito en TypeScript. */
 export function loadPixel() {
-  if (window.fbq) {
-    window.fbq("consent", "grant");
-    return;
-  }
+  if (window.fbq) return;
 
   const fbq = function (...args: unknown[]) {
     if (fbq.callMethod) fbq.callMethod(...args);

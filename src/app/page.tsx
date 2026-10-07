@@ -2,6 +2,8 @@ import { FunnelHeader } from "@/components/funnel-header";
 import { FunnelFooter } from "@/components/funnel-footer";
 import { HourRail } from "@/components/hour-rail";
 import { Hero } from "@/components/hero";
+import { Vsl } from "@/components/vsl";
+import { Voices } from "@/components/voices";
 import { Conversation } from "@/components/conversation";
 import { Panel } from "@/components/panel";
 import { AgentStack } from "@/components/agent-stack";
@@ -16,9 +18,10 @@ import { BookBar } from "@/components/book-bar";
 
 /**
  * La web es el funnel de los anuncios: sin menú ni salidas. Las seis piezas,
- * en orden: llamada al nicho y titular (hero), VSL, demo (la conversación y el
- * panel), y el formulario con el calendario al final (agenda). Lo de en medio
- * responde las seis preguntas con las que llega el dueño.
+ * en orden: llamada al nicho y titular (hero), VSL (se enciende rellenando
+ * `vsl.video` en content.ts), las palabras del cliente final, demo (la
+ * conversación y el panel), y el formulario con el calendario al final
+ * (agenda). Lo de en medio responde las preguntas con las que llega el dueño.
  */
 export default function Page() {
   return (
@@ -29,7 +32,8 @@ export default function Page() {
 
       <main>
         <Hero funnel />
-        {/* Pieza 3 · VSL: entra aquí cuando esté grabado (lección 6). */}
+        <Vsl />
+        <Voices />
         <Conversation />
         <Panel link={false} />
         <AgentStack />

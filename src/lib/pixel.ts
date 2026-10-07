@@ -95,3 +95,12 @@ export function loadPixel() {
 export function trackSchedule(eventId?: string) {
   window.fbq?.("track", "Schedule", {}, eventId ? { eventID: eventId } : undefined);
 }
+
+/**
+ * El play del VSL. Evento propio (no estándar de Meta) para leer en el
+ * administrador de eventos qué parte de las visitas ve el vídeo; la referencia
+ * del programa es un 20 %.
+ */
+export function trackVideoPlay() {
+  window.fbq?.("trackCustom", "VSLPlay");
+}

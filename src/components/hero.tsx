@@ -5,10 +5,11 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { WhatsappLogoIcon, CalendarBlankIcon } from "@phosphor-icons/react/dist/ssr";
-import { funnelCopy, hero } from "@/lib/content";
+import { WhatsappLogoIcon, CalendarBlankIcon, PlayIcon } from "@phosphor-icons/react/dist/ssr";
+import { funnelCopy, hero, vsl } from "@/lib/content";
 import { cta, funnel as funnelLinks, site } from "@/lib/site";
 import { ActionPrimary, ActionSecondary, Section, Wrap } from "./ui";
+import { VSL_ID } from "./vsl";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -106,15 +107,28 @@ export function Hero({ funnel = false }: { funnel?: boolean }) {
 
         {funnel ? (
           <div className="mt-9">
-            <span className="hero-act inline-block">
-              <ActionPrimary
-                href={funnelLinks.agendaHref}
-                external={false}
-                icon={<CalendarBlankIcon size={18} weight="bold" />}
-              >
-                {cta.book}
-              </ActionPrimary>
-            </span>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+              <span className="hero-act inline-block">
+                <ActionPrimary
+                  href={funnelLinks.agendaHref}
+                  external={false}
+                  icon={<CalendarBlankIcon size={18} weight="bold" />}
+                >
+                  {cta.book}
+                </ActionPrimary>
+              </span>
+              {/* Solo cuando el VSL existe. Es un enlace, no un segundo botón:
+                  la acción principal sigue siendo una. */}
+              {vsl.video && (
+                <a
+                  href={`#${VSL_ID}`}
+                  className="hero-act inline-flex items-center gap-1.5 text-[15px] font-medium text-[var(--color-ink)] underline decoration-[var(--color-rule)] underline-offset-4 transition-colors duration-150 hover:decoration-[var(--color-ink)]"
+                >
+                  <PlayIcon size={16} weight="fill" />
+                  {vsl.play} · {vsl.duration}
+                </a>
+              )}
+            </div>
             <p className="hero-act mt-4 max-w-[40ch] text-[14px] leading-[1.5] text-[var(--color-ink-faint)]">
               {funnelCopy.ctaNote}
             </p>

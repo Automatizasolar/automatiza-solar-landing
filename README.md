@@ -42,7 +42,10 @@ redirige a la home.
 - El titular tiene que coincidir palabra por palabra con el del anuncio.
 - Los datos que se piden al reservar (WhatsApp, web o Instagram, casilla de consentimiento)
   se configuran en el evento de Calendly, no aquí.
-- El VSL va en el hueco marcado en `src/app/page.tsx`, detrás del hero.
+- El VSL ya tiene su pieza (`src/components/vsl.tsx`, detrás del hero). Se enciende rellenando
+  `vsl.video` en `src/lib/content.ts`: un vídeo propio en `public/brand/video/` con portada y
+  subtítulos `.vtt`, o un embed de Loom/YouTube (la CSP ya los admite). Hasta entonces no se
+  pinta nada. El play se mide en el pixel como evento `VSLPlay`, solo con cookies aceptadas.
 - **Pixel de Meta** (`src/lib/pixel.ts`, conjunto de datos «Web» del portfolio Automatiza Solar): PageView al entrar y
   Schedule cuando Calendly confirma la reserva. No carga nada hasta que se aceptan las cookies
   (`cookie-consent.tsx`); la CSP le abre `connect.facebook.net` y `www.facebook.com`.

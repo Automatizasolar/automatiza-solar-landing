@@ -15,14 +15,21 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
  *
  * La pila está motivada: son cuatro pasos de una misma conversación, en orden,
  * y verlos superponerse dice que ocurren en la misma llamada y no en cuatro
- * momentos distintos. La que sale se encoge y se apaga; nunca desaparece.
+ * momentos distintos. La que sale se apaga y se retira unos píxeles; nunca
+ * desaparece.
+ *
+ * Antes además se encogía (`scale: 0.94`) y se desenfocaba (`blur(3px)`), y
+ * eso fue lo que reportaron en octubre de 2026: «las animaciones hacen ver
+ * borrosas algunas secciones al bajar». Un texto escalado a 0,94 o con 3px de
+ * desenfoque se ve borroso durante todo el solape, que con el raspado dura lo
+ * que la persona tarde en bajar. Solo opacidad y un desplazamiento entero.
  *
  * Las tarjetas miden 58dvh, no una pantalla entera. El contenido de cada una
  * ocupa unos 449px, así que a 522px quedan 73px de holgura: lo justo para que
  * siga leyéndose como tarjeta flotando en su caja y no como caja llena. Por
  * debajo de 56dvh el efecto muere.
  *
- * Y se lee mejor corta: el desenfoque de la que sale corre siempre sobre un
+ * Y se lee mejor corta: el apagado de la que sale corre siempre sobre un
  * viewport completo, mida lo que mida la tarjeta, así que con tarjetas de 522px
  * la siguiente entra mientras la anterior aún está en su sitio y el solape se
  * ve de verdad.
@@ -56,10 +63,11 @@ export function AgentStack() {
           });
 
           gsap.to(card, {
-            scale: 0.94,
-            opacity: 0.28,
-            filter: "blur(3px)",
+            y: -16,
+            opacity: 0.22,
             ease: "none",
+            // Al píxel entero: un translate fraccionario emborrona el texto.
+            snap: { y: 1 },
             scrollTrigger: {
               trigger: cards[i + 1],
               start: "top bottom",

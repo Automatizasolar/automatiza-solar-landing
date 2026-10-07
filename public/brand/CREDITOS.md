@@ -26,7 +26,7 @@ Tres criterios que se aplicaron al elegirlas y que conviene mantener:
 | Fichero | Tamaño | Dónde se ve | Origen |
 |---|---|---|---|
 | `hero-instalador.jpg` | 1800×1350 | Placa de la esquina en la portada | https://unsplash.com/photos/949b1732bb0a |
-| `manos-instalacion.jpg` | 2000×1334 | Banda bajo «Qué hace mientras tú estás en una instalación» | https://unsplash.com/photos/40b7c11c8727 |
+| `manos-instalacion.jpg` | 2000×1334 | Banda bajo «Qué hace mientras tú estás en un tejado» | https://unsplash.com/photos/40b7c11c8727 |
 | `casa-instalada.jpg` | 2000×1126 | Fondo de la banda de cierre | https://unsplash.com/photos/beef51a914fe |
 
 **La de la portada argumenta la frase:** el instalador tiene las dos manos ocupadas

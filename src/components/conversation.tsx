@@ -87,11 +87,15 @@ export function Conversation() {
             0,
           );
 
+          // Sin `blur` y con el desplazamiento redondeado al píxel. Al ir
+          // raspado con el scroll, los mensajes se quedaban a medio desenfocar
+          // y en coordenadas fraccionarias mientras la persona bajaba, y el
+          // texto se veía borroso (reportado en octubre de 2026).
           items.forEach((el, i) => {
             tl.fromTo(
               el,
-              { opacity: 0, y: 22, filter: "blur(7px)" },
-              { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" },
+              { opacity: 0, y: 22 },
+              { opacity: 1, y: 0, duration: 0.55, ease: "expo.out", snap: { y: 1 } },
               // El offset es menor que la duración a propósito: con el raspado
               // más corto los mensajes se pisan un poco, que es como llegan los
               // WhatsApp de verdad.
@@ -111,6 +115,7 @@ export function Conversation() {
                 return Math.min(0, box.clientHeight - el.scrollHeight);
               },
               ease: "none",
+              snap: { y: 1 },
               duration: items.length * 0.45,
             },
             0,
@@ -119,7 +124,7 @@ export function Conversation() {
           tl.fromTo(
             ".payoff",
             { opacity: 0, y: 18 },
-            { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" },
+            { opacity: 1, y: 0, duration: 0.8, ease: "expo.out", snap: { y: 1 } },
             items.length * 0.45 + 0.2,
           );
         },
@@ -170,7 +175,7 @@ export function Conversation() {
               </div>
 
               <div className="relative lg:h-[58vh] lg:overflow-hidden">
-              <div ref={thread} className="flex flex-col gap-4 will-change-transform">
+              <div ref={thread} className="flex flex-col gap-4">
                 {conversation.messages.map((m, i) => {
                   const mine = m.from === "us";
                   return (

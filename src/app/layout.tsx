@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   title: "Automatiza Solar | El WhatsApp que no contestas lo contesta tu competencia",
   description:
-    "Agente de atención y ventas por WhatsApp para empresas de energía solar. Responde al instante sobre tu número de siempre, califica con tu catálogo y agenda la visita. Siete días hábiles, sin permanencia.",
+    "Para empresas de paneles solares en Medellín: tu WhatsApp de siempre responde en segundos, pregunta la factura y el techo, recomienda el kit con tus precios y agenda la visita técnica. Siete días hábiles, sin permanencia.",
   openGraph: {
     title: "El WhatsApp que no contestas lo contesta tu competencia",
     description:
-      "Agente de atención y ventas por WhatsApp para empresas de energía solar. Responde al instante sobre tu número de siempre, califica y agenda la visita.",
+      "Para empresas de paneles solares en Medellín: tu WhatsApp de siempre responde en segundos, recomienda el kit con tus precios y agenda la visita técnica.",
     images: ["/brand/og-automatiza-solar.png"],
     url: "https://automatizasolar.com",
     siteName: "Automatiza Solar",
@@ -58,11 +58,14 @@ const jsonLd = {
       "@type": "ProfessionalService",
       name: site.name,
       description:
-        "Agente de atención y ventas por WhatsApp para empresas de energía solar: responde al instante, califica con tu catálogo y agenda la visita técnica.",
+        "Agente de atención y ventas por WhatsApp para empresas de paneles solares en Medellín: responde al instante, recomienda el kit con el catálogo del cliente y agenda la visita técnica.",
       telephone: `+${WHATSAPP}`,
       email: site.email,
       url: "https://automatizasolar.com",
-      areaServed: { "@type": "Country", name: "Colombia" },
+      areaServed: [
+        { "@type": "City", name: "Medellín" },
+        { "@type": "Country", name: "Colombia" },
+      ],
     },
     {
       "@type": "FAQPage",

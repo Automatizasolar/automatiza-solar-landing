@@ -31,6 +31,9 @@ export function Arrivals() {
         gsap.to(el, {
           x: () => -(el.scrollWidth - window.innerWidth + 96),
           ease: "none",
+          // Al píxel entero: con el raspado la pista quedaba en coordenadas
+          // fraccionarias y el texto de las tarjetas se veía borroso.
+          snap: { x: 1 },
           scrollTrigger: {
             trigger: root.current,
             start: "top top",

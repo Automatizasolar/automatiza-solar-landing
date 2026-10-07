@@ -95,6 +95,10 @@ Dos consecuencias que no son casuales:
 El hueco largo del raíl entre las 22:17 y las 07:40 son nueve horas de noche en las que
 nadie contestó. No es un accidente de maquetación: es la tesis dibujada.
 
+El VSL y «Así hablan de las empresas solares los que les escriben» van entre la portada y la
+conversación **sin hora propia**: siguen siendo el domingo a las 22:14 y el raíl no les pone
+marca. Son las piezas 3 y 3b del funnel, no momentos de la jornada.
+
 ## El raíl de horas
 
 La pieza firma. Columna fija de `104px` a partir de `1024px`; por debajo se reduce a una
@@ -142,7 +146,7 @@ Se descartaron varias fotos técnicamente mejores por estas tres reglas, y convi
 3. **Que la foto argumente el texto que acompaña.** La de la portada no está porque quede
    bien: el instalador tiene las dos manos ocupadas, que es exactamente por lo que no está
    contestando el WhatsApp. La banda del agente es un par de manos atornillando, bajo el
-   titular «mientras tú estás en una instalación».
+   titular «mientras tú estás en un tejado».
 
 ## Movimiento
 
@@ -153,7 +157,7 @@ una frase:
 |---|---|---|
 | Hero | Líneas que suben bajo su máscara, placa con paralaje | Entrada única de la página |
 | Conversación | Fijada, raspada: los mensajes se escriben y el reloj avanza | El paso del tiempo **es** el argumento |
-| Cuatro funciones | Pila fija: la anterior se encoge, se apaga y se desenfoca | Ocurren en la misma conversación, no en cuatro momentos |
+| Cuatro funciones | Pila fija: la anterior se apaga y se retira unos píxeles | Ocurren en la misma conversación, no en cuatro momentos |
 | Los cuatro que escriben | Paneo horizontal fijado | El eje horizontal es el eje del día |
 | Siete días | El eje se dibuja con el scroll | Hace visible el cambio de escala |
 | Resto | Revelado escalonado, uno solo para toda la página | Ritmo, sin protagonismo |
@@ -173,7 +177,7 @@ elegidos a ojo, y **no deben subirse**:
 - **Pila, `lg:min-h-[58dvh]`.** El contenido de cada tarjeta mide ~449 px; a 522 quedan
   73 px de holgura, el mínimo para que siga leyéndose como tarjeta flotando y no como
   caja llena. Por debajo de 56dvh el efecto muere. Y **se lee mejor corta**: el
-  desenfoque de la que sale corre siempre sobre un viewport completo, mida lo que mida
+  apagado de la que sale corre siempre sobre un viewport completo, mida lo que mida
   la tarjeta, así que con tarjetas de 522 px la siguiente entra mientras la anterior aún
   está en su sitio y el solape se ve de verdad.
 - **Paneo, tarjetas de `min(34vw,440px)`.** Recorrido de ~400 px. La sección ya no fuerza
@@ -182,7 +186,8 @@ elegidos a ojo, y **no deben subirse**:
 Reglas de ejecución:
 
 - Curvas propias: `expo.out` para entradas; las nativas no tienen fuerza.
-- Solo `transform`, `opacity`, `filter` y `mask`. Nunca `top`, `left`, `width` ni `height`.
+- Solo `transform`, `opacity` y `mask`. `filter` solo sobre imágenes, nunca sobre texto. Nunca
+  `top`, `left`, `width` ni `height`.
 - **Nada de `window.addEventListener("scroll")`.** Lenis conduce y GSAP lee desde su ticker.
 - El paneo y la pila **solo se fijan a partir de 1024px**. Secuestrar el scroll en un móvil
   es hostil, y una sección pensada para estar fijada deja pantallas vacías cuando no lo está.
@@ -192,8 +197,14 @@ Reglas de ejecución:
   contenido que sigue en flujo normal. La última tarjeta es la única que nunca se fija, así
   que sin z-index se colaba por debajo de la anterior y los dos textos se leían encima del
   otro. No se toca.
-- La que sale se retira hasta `opacity .28` con `blur(3px)`. Sobre papel una tarjeta blanca
-  al 45% todavía se lee, y competía con la que entra.
+- La que sale se retira hasta `opacity .22` y `y: -16`. **Sin `scale` ni `blur` sobre texto en
+  ninguna animación raspada por el scroll.** La pila encogía y desenfocaba la tarjeta que salía y
+  la conversación entraba cada mensaje desde `blur(7px)`; en octubre de 2026 el cliente reportó
+  «las animaciones hacen ver borrosas algunas secciones al bajar», y es exactamente eso: un texto
+  escalado a 0,94 o a medio desenfocar se ve borroso durante todo el recorrido, y con el raspado
+  el recorrido dura lo que la persona tarde en bajar. Por lo mismo, los `translate` raspados
+  (pila, hilo de la conversación, paneo) van con `snap` al píxel entero: una coordenada
+  fraccionaria emborrona la tipografía.
 
 ### El gancho `data-motion`
 

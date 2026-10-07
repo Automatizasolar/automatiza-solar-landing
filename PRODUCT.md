@@ -88,6 +88,10 @@ hábiles**, sin permanencia.
   a esa persona. Esto debe seguir declarándose en la página.
 - **No hay métricas, casos de éxito, número de clientes ni logos de clientes.** No fabricar
   ninguno.
+- Tres citas literales de la investigación del avatar (reseñas y llamadas a instaladoras de
+  Medellín, ficha «Perfil de audiencia» del cuaderno): «Te dejan en visto», «Tardan horas en
+  contestar, después más horas para cotizar», «Como que no les interesa vender». Van en la
+  página presentadas como lo que son, no como clientes propios.
 - No hay perfiles de redes sociales publicados.
 
 ## Product Principles

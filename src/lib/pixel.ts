@@ -89,18 +89,59 @@ export function loadPixel() {
 }
 
 /**
+ * Qué pasó con el VSL en esta visita, para leer el resto del embudo partido en
+ * dos: quien vio el vídeo y quien no. Vive en sessionStorage (muere al cerrar
+ * la pestaña y no identifica a nadie) y viaja como parámetro en los eventos
+ * de la agenda. En el administrador de eventos de Meta se filtra por él.
+ */
+const VSL_KEY = "as-vsl";
+
+function rememberVideo(pct: number) {
+  try {
+    const prev = Number(sessionStorage.getItem(VSL_KEY) ?? -1);
+    if (pct > prev) sessionStorage.setItem(VSL_KEY, String(pct));
+  } catch {
+    // Sin almacenamiento, el dato dura lo que dura el evento.
+  }
+}
+
+function videoStatus() {
+  let pct = -1;
+  try {
+    pct = Number(sessionStorage.getItem(VSL_KEY) ?? -1);
+  } catch {
+    pct = -1;
+  }
+  return pct < 0 ? { video: "no_visto" } : { video: "visto", video_porcentaje: pct };
+}
+
+/**
+ * El play del VSL. Evento propio (no estándar de Meta) para leer qué parte de
+ * las visitas le da al play; la referencia del programa es un 20 %.
+ */
+export function trackVideoPlay() {
+  rememberVideo(0);
+  window.fbq?.("trackCustom", "VSLPlay");
+}
+
+/**
+ * Los cuartos del VSL: cuánto del vídeo se ve de verdad, no solo quién le dio
+ * al play. Solo con vídeo propio; un embed de Loom o YouTube no avisa.
+ */
+export function trackVideoProgress(pct: 25 | 50 | 75 | 100) {
+  rememberVideo(pct);
+  window.fbq?.("trackCustom", "VSLProgreso", { porcentaje: pct });
+}
+
+/** Eligió día y hora en Calendly y se le abrió el formulario: el paso anterior a reservar. */
+export function trackDateSelected() {
+  window.fbq?.("trackCustom", "AgendaHora", videoStatus());
+}
+
+/**
  * La reserva confirmada. El eventID es el invitado de Calendly: si un día se
  * añade la API de conversiones, Meta usa ese ID para no contarla dos veces.
  */
 export function trackSchedule(eventId?: string) {
-  window.fbq?.("track", "Schedule", {}, eventId ? { eventID: eventId } : undefined);
-}
-
-/**
- * El play del VSL. Evento propio (no estándar de Meta) para leer en el
- * administrador de eventos qué parte de las visitas ve el vídeo; la referencia
- * del programa es un 20 %.
- */
-export function trackVideoPlay() {
-  window.fbq?.("trackCustom", "VSLPlay");
+  window.fbq?.("track", "Schedule", videoStatus(), eventId ? { eventID: eventId } : undefined);
 }

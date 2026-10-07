@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { preconnect } from "react-dom";
 import { funnelCopy } from "@/lib/content";
-import { trackSchedule } from "@/lib/pixel";
+import { trackDateSelected, trackSchedule } from "@/lib/pixel";
 import { funnel } from "@/lib/site";
 import { PrivacyButton } from "./privacy";
 import { Section, Wrap } from "./ui";
@@ -27,8 +27,10 @@ import { Section, Wrap } from "./ui";
  * no cuando la persona llega abajo. Mientras arranca se ve un esqueleto del
  * calendario en vez de un hueco en blanco.
  *
- * Por el mismo canal Calendly avisa de la reserva confirmada: ahí se manda el
- * Schedule al pixel (solo si la persona aceptó las cookies).
+ * Por el mismo canal Calendly avisa de los pasos: cuando eligen día y hora y
+ * se abre el formulario (AgendaHora) y cuando la reserva queda confirmada
+ * (Schedule). Los dos van al pixel, solo si la persona aceptó las cookies, y
+ * los dos llevan si vio el VSL o no.
  */
 export function Agenda() {
   const frame = useRef<HTMLIFrameElement>(null);
@@ -54,6 +56,9 @@ export function Agenda() {
       if (e.data?.event === "calendly.page_height") {
         const h = parseInt(e.data.payload?.height, 10);
         if (h > 0) setHeight(h);
+      }
+      if (e.data?.event === "calendly.date_and_time_selected") {
+        trackDateSelected();
       }
       if (e.data?.event === "calendly.event_scheduled") {
         trackSchedule(e.data.payload?.invitee?.uri);

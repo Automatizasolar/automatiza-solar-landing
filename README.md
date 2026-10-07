@@ -46,9 +46,13 @@ redirige a la home.
   `vsl.video` en `src/lib/content.ts`: un vídeo propio en `public/brand/video/` con portada y
   subtítulos `.vtt`, o un embed de Loom/YouTube (la CSP ya los admite). Hasta entonces no se
   pinta nada. El play se mide en el pixel como evento `VSLPlay`, solo con cookies aceptadas.
-- **Pixel de Meta** (`src/lib/pixel.ts`, conjunto de datos «Web» del portfolio Automatiza Solar): PageView al entrar y
-  Schedule cuando Calendly confirma la reserva. No carga nada hasta que se aceptan las cookies
-  (`cookie-consent.tsx`); la CSP le abre `connect.facebook.net` y `www.facebook.com`.
+- **Pixel de Meta** (`src/lib/pixel.ts`, conjunto de datos «Web» del portfolio Automatiza Solar).
+  No carga nada hasta que se aceptan las cookies (`cookie-consent.tsx`); la CSP le abre
+  `connect.facebook.net` y `www.facebook.com`. Eventos, en el orden del embudo: `PageView` al
+  entrar · `VSLPlay` al darle al play · `VSLProgreso` (parámetro `porcentaje` 25/50/75/100, solo con
+  vídeo propio) · `AgendaHora` cuando eligen día y hora en Calendly · `Schedule` cuando la reserva
+  queda confirmada. `AgendaHora` y `Schedule` llevan el parámetro `video` (`visto`/`no_visto`) y
+  `video_porcentaje`, para leer el embudo partido entre quien vio el VSL y quien no.
 
 ## Cambiar cosas
 

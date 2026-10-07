@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type SyntheticEvent } from "react";
 import Image from "next/image";
 import { PlayIcon } from "@phosphor-icons/react/dist/ssr";
 import { vsl } from "@/lib/content";
-import { trackVideoPlay } from "@/lib/pixel";
+import { trackVideoPlay, trackVideoProgress } from "@/lib/pixel";
 import { Wrap } from "./ui";
 
 export const VSL_ID = "video";
@@ -23,12 +23,32 @@ export const VSL_ID = "video";
  */
 export function Vsl() {
   const [playing, setPlaying] = useState(false);
+  // Cuartos ya avisados al pixel: cada uno una sola vez por visita.
+  const marks = useRef(new Set<number>());
   const video = vsl.video;
   if (!video) return null;
 
   const start = () => {
     setPlaying(true);
     trackVideoPlay();
+  };
+
+  const onTime = (e: SyntheticEvent<HTMLVideoElement>) => {
+    const el = e.currentTarget;
+    if (!el.duration) return;
+    const pct = (el.currentTime / el.duration) * 100;
+    for (const m of [25, 50, 75] as const) {
+      if (pct >= m && !marks.current.has(m)) {
+        marks.current.add(m);
+        trackVideoProgress(m);
+      }
+    }
+  };
+
+  const onEnded = () => {
+    if (marks.current.has(100)) return;
+    marks.current.add(100);
+    trackVideoProgress(100);
   };
 
   return (
@@ -60,6 +80,8 @@ export function Vsl() {
                 controls
                 autoPlay
                 playsInline
+                onTimeUpdate={onTime}
+                onEnded={onEnded}
                 className="absolute inset-0 h-full w-full"
               >
                 {video.captions && (

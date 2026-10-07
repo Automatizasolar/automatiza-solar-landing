@@ -157,7 +157,7 @@ una frase:
 |---|---|---|
 | Hero | Líneas que suben bajo su máscara, placa con paralaje | Entrada única de la página |
 | Conversación | Fijada, raspada: los mensajes se escriben y el reloj avanza | El paso del tiempo **es** el argumento |
-| Cuatro funciones | Pila fija: la anterior se apaga y se retira unos píxeles | Ocurren en la misma conversación, no en cuatro momentos |
+| Cuatro funciones | Pila fija: la siguiente tapa a la anterior, nada se apaga | Ocurren en la misma conversación, no en cuatro momentos |
 | Los cuatro que escriben | Paneo horizontal fijado | El eje horizontal es el eje del día |
 | Siete días | El eje se dibuja con el scroll | Hace visible el cambio de escala |
 | Resto | Revelado escalonado, uno solo para toda la página | Ritmo, sin protagonismo |
@@ -176,10 +176,9 @@ elegidos a ojo, y **no deben subirse**:
   los WhatsApp de verdad se pisan.
 - **Pila, `lg:min-h-[58dvh]`.** El contenido de cada tarjeta mide ~449 px; a 522 quedan
   73 px de holgura, el mínimo para que siga leyéndose como tarjeta flotando y no como
-  caja llena. Por debajo de 56dvh el efecto muere. Y **se lee mejor corta**: el
-  apagado de la que sale corre siempre sobre un viewport completo, mida lo que mida
-  la tarjeta, así que con tarjetas de 522 px la siguiente entra mientras la anterior aún
-  está en su sitio y el solape se ve de verdad.
+  caja llena. Por debajo de 56dvh el efecto muere. Y **se lee mejor corta**: la
+  siguiente tarda casi media pantalla de scroll en subir desde el borde inferior hasta tocar
+  a la fijada, y ese es el tiempo de lectura de la que está arriba, entera y opaca.
 - **Paneo, tarjetas de `min(34vw,440px)`.** Recorrido de ~400 px. La sección ya no fuerza
   `100dvh`: la altura la da el contenido.
 
@@ -197,8 +196,14 @@ Reglas de ejecución:
   contenido que sigue en flujo normal. La última tarjeta es la única que nunca se fija, así
   que sin z-index se colaba por debajo de la anterior y los dos textos se leían encima del
   otro. No se toca.
-- La que sale se retira hasta `opacity .22` y `y: -16`. **Sin `scale` ni `blur` sobre texto en
-  ninguna animación raspada por el scroll.** La pila encogía y desenfocaba la tarjeta que salía y
+- **En la pila nada se apaga: la siguiente tapa a la anterior.** Cada `.stack-card` lleva el
+  papel de fondo (`bg-ground`) opaco, y al subir cubre por completo a la fijada. Como las
+  tarjetas miden 58dvh, la siguiente asoma casi siempre por abajo, así que cualquier apagado
+  de la fijada mientras tanto se lee como «la tarjeta se vuelve transparente mientras la leo».
+  Se probó al 28 % con blur, al 22 % y a cero antes del solape; el cliente pidió en octubre de
+  2026 «que la anterior desaparezca del todo y que la que sigue se lea bien», y taparla es lo
+  único que cumple las dos. **Sin `scale` ni `blur` sobre texto en ninguna animación raspada
+  por el scroll.** La pila encogía y desenfocaba la tarjeta que salía y
   la conversación entraba cada mensaje desde `blur(7px)`; en octubre de 2026 el cliente reportó
   «las animaciones hacen ver borrosas algunas secciones al bajar», y es exactamente eso: un texto
   escalado a 0,94 o a medio desenfocar se ve borroso durante todo el recorrido, y con el raspado

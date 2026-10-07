@@ -14,25 +14,26 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
  * Las cuatro funciones, apiladas de verdad.
  *
  * La pila está motivada: son cuatro pasos de una misma conversación, en orden,
- * y verlos superponerse dice que ocurren en la misma llamada y no en cuatro
- * momentos distintos. La que sale se apaga y se retira unos píxeles; nunca
- * desaparece.
+ * y verlos sucederse en el mismo sitio dice que ocurren en la misma llamada y
+ * no en cuatro momentos distintos.
  *
- * Antes además se encogía (`scale: 0.94`) y se desenfocaba (`blur(3px)`), y
- * eso fue lo que reportaron en octubre de 2026: «las animaciones hacen ver
- * borrosas algunas secciones al bajar». Un texto escalado a 0,94 o con 3px de
- * desenfoque se ve borroso durante todo el solape, que con el raspado dura lo
- * que la persona tarde en bajar. Solo opacidad y un desplazamiento entero.
+ * Nada se apaga ni se encoge: la siguiente TAPA a la anterior. Cada tarjeta
+ * lleva el papel de fondo opaco, así que al subir cubre por completo a la que
+ * está fijada debajo, y la que se lee está siempre al cien por cien. Antes la
+ * fijada se iba apagando mientras la siguiente asomaba por abajo (y antes aún,
+ * encogida y desenfocada); como las tarjetas miden 58dvh, la siguiente asoma
+ * casi siempre, y el efecto era leer una tarjeta que se volvía transparente
+ * encima de otra. En octubre de 2026 pidieron que la anterior desaparezca del
+ * todo y que la que sigue se lea bien. Taparla lo hace sin tocar su texto.
  *
  * Las tarjetas miden 58dvh, no una pantalla entera. El contenido de cada una
  * ocupa unos 449px, así que a 522px quedan 73px de holgura: lo justo para que
  * siga leyéndose como tarjeta flotando en su caja y no como caja llena. Por
  * debajo de 56dvh el efecto muere.
  *
- * Y se lee mejor corta: el apagado de la que sale corre siempre sobre un
- * viewport completo, mida lo que mida la tarjeta, así que con tarjetas de 522px
- * la siguiente entra mientras la anterior aún está en su sitio y el solape se
- * ve de verdad.
+ * Y se lee mejor corta: la siguiente tarda casi media pantalla de scroll en
+ * subir desde el borde inferior hasta tocar a la fijada, y ese es el tiempo
+ * de lectura de la que está arriba, entera y opaca, antes de que la tapen.
  *
  * Cada tarjeta lleva su z-index explícito y creciente, y eso no es adorno.
  * Al fijar una tarjeta, GSAP la pone en `position: fixed`, y un elemento
@@ -62,19 +63,6 @@ export function AgentStack() {
             pinSpacing: false,
           });
 
-          gsap.to(card, {
-            y: -16,
-            opacity: 0.22,
-            ease: "none",
-            // Al píxel entero: un translate fraccionario emborrona el texto.
-            snap: { y: 1 },
-            scrollTrigger: {
-              trigger: cards[i + 1],
-              start: "top bottom",
-              end: "top top",
-              scrub: true,
-            },
-          });
         });
       });
     },
@@ -107,7 +95,8 @@ export function AgentStack() {
         {agent.steps.map((s, i) => (
           <div
             key={s.title}
-            className="stack-card relative flex items-center py-6 lg:min-h-[58dvh] lg:py-0"
+            // El papel de fondo es lo que tapa a la tarjeta fijada debajo.
+            className="stack-card relative flex items-center bg-[var(--color-ground)] py-6 lg:min-h-[58dvh] lg:py-0"
             style={{ zIndex: i + 1 }}
           >
             <Wrap>

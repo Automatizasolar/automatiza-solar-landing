@@ -3,8 +3,8 @@
 Landing de una sola página para captar empresas de energía solar en Colombia. Next.js 16
 (App Router, TypeScript), Tailwind v4, GSAP ScrollTrigger y Lenis.
 
-**Proyecto local.** No está desplegado en ningún sitio y no está preparado para estarlo sin
-revisar antes los pendientes del final.
+**En producción en https://automatizasolar.com** (Vercel, proyecto `automatiza-solar-landing`).
+Cada push a `main` en GitHub despliega solo.
 
 ## Arrancar
 
@@ -20,8 +20,9 @@ Otros comandos: `pnpm build` (build de producción), `pnpm lint`.
 ## Qué hay dentro
 
 ```
-src/app/layout.tsx        fuentes, metadatos, datos estructurados
-src/app/page.tsx          la home, que es el funnel de los anuncios (ver abajo)
+src/app/route.ts          sirve la home: el funnel de los anuncios (ver abajo)
+src/funnel/index.html     LA HOME: un solo HTML con sus estilos y su JS
+src/app/layout.tsx        fuentes, metadatos y datos estructurados de /privacidad
 src/app/privacidad/       política de tratamiento de datos (texto en src/lib/privacy.ts)
 src/app/globals.css       tokens del mundo visual y estado base del movimiento
 src/lib/site.ts           contacto y enlaces. EL NÚMERO SE CAMBIA AQUÍ
@@ -34,20 +35,31 @@ DESIGN.md                 el mundo visual y por qué cada decisión está donde 
 
 ## La home es el funnel de los anuncios
 
+Desde el 8 de octubre de 2026 la home es **`src/funnel/index.html`**: la landing de ejemplo de la
+lección 5 de AIlink Élite rellenada con el cuaderno, pieza por pieza (llamada al nicho → titular
+→ VSL → demo → agenda), en una columna y sin nada que no esté en la lección. `src/app/route.ts`
+la sirve tal cual y se genera al compilar, así que en Vercel es estática. La home anterior
+(la de componentes y el raíl de horas) se retiró quitando `src/app/page.tsx`; sus componentes
+siguen en `src/components/` y `src/lib/content.ts`, sin usarse, por si hubiera que volver.
+
 Destino de las campañas de Meta: sin menú, sin WhatsApp ni correo, y todos los botones bajan a
-la agenda, que es el Calendly embebido al final (`agenda.tsx`, un
-iframe; la CSP de `vercel.json` le abre `frame-src`). `/llamada`, donde vivió al principio,
-redirige a la home.
+la agenda, que es el Calendly embebido al final (un iframe; la CSP de `vercel.json` le abre
+`frame-src`). `/llamada`, donde vivió al principio, redirige a la home.
 
 - El titular tiene que coincidir palabra por palabra con el del anuncio.
 - Los datos que se piden al reservar (WhatsApp, web o Instagram, casilla de consentimiento)
   se configuran en el evento de Calendly, no aquí.
-- El VSL ya tiene su pieza (`src/components/vsl.tsx`, detrás del hero). Se enciende rellenando
-  `vsl.video` en `src/lib/content.ts`: un vídeo propio en `public/brand/video/` con portada y
-  subtítulos `.vtt`, o un embed de Loom/YouTube (la CSP ya los admite). Hasta entonces no se
-  pinta nada. El play se mide en el pixel como evento `VSLPlay`, solo con cookies aceptadas.
-- **Pixel de Meta** (`src/lib/pixel.ts`, conjunto de datos «Web» del portfolio Automatiza Solar).
-  No carga nada hasta que se aceptan las cookies (`cookie-consent.tsx`); la CSP le abre
+- **El VSL** es un vídeo propio: `public/brand/video/vsl-v1.mp4` (1080p, ~33 MB, `faststart`) y su
+  portada `vsl-v1-portada.jpg`. Los subtítulos van incrustados en el vídeo. No se descarga nada
+  hasta el play. Para cambiarlo, súbelo con **otro nombre** (`vsl-v2.mp4`) y cambia las dos
+  rutas en el HTML: `/brand/` se cachea un año (`vercel.json`) y con el mismo nombre la gente
+  seguiría viendo el viejo.
+- **El caso de éxito** tiene su hueco escrito en el HTML (`#casoExito`, en «Con quién vas a
+  hablar») con el atributo `hidden`: no se ve. Se enseña cuando exista el primer caso real, con
+  permiso por escrito: se cambian los tres textos y se quita `hidden`. Nunca uno inventado.
+- **Pixel de Meta** (conjunto de datos «Web», ID 994422470343287, del portfolio Automatiza Solar),
+  en el propio HTML. No carga nada hasta que se aceptan las cookies (misma llave `as-cookies` que
+  usa /privacidad); la CSP le abre
   `connect.facebook.net` y `www.facebook.com`. Eventos, en el orden del embudo: `PageView` al
   entrar · `VSLPlay` al darle al play · `VSLProgreso` (parámetro `porcentaje` 25/50/75/100, solo con
   vídeo propio) · `AgendaHora` cuando eligen día y hora en Calendly · `Schedule` cuando la reserva
@@ -56,7 +68,7 @@ redirige a la home.
 
 ## Cambiar cosas
 
-- **Textos:** todos en `src/lib/content.ts`. No hay copy suelto en los componentes.
+- **Textos de la home:** en `src/funnel/index.html`. (`src/lib/content.ts` es de la home anterior.)
 - **Número de WhatsApp:** una sola línea, `WHATSAPP` en `src/lib/site.ts`, en formato
   internacional y sin signos. Hoy solo lo usan los datos estructurados (JSON-LD) y la política de datos.
 - **Fotos:** sustituir el fichero en `public/brand/fotos/` conservando nombre y proporción.

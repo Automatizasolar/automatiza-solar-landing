@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automatiza Solar | El WhatsApp que no contestas lo contesta tu competencia</title>
+<meta name="description" content="Para empresas de paneles solares en Medellín: tu WhatsApp de siempre contesta solo de noche y el fin de semana, pregunta la factura y el techo, recomienda el kit con tus precios y deja la visita técnica agendada. Llamada gratis de 30 minutos.">
+<link rel="canonical" href="https://automatizasolar.com/">
+<meta name="theme-color" content="#fafaf9">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="Automatiza Solar">
+<meta property="og:url" content="https://automatizasolar.com/">
+<meta property="og:title" content="El WhatsApp que no contestas lo contesta tu competencia">
+<meta property="og:description" content="Para empresas de paneles solares en Medellín: tu WhatsApp de siempre responde en segundos, recomienda el kit con tus precios y agenda la visita técnica.">
+<meta property="og:image" content="https://automatizasolar.com/brand/og-automatiza-solar.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<!-- La portada del VSL es lo más grande del primer pantallazo: sale antes que nada. -->
+<link rel="preload" as="image" href="/brand/video/vsl-v1-portada.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://calendly.com">
+<link rel="preconnect" href="https://assets.calendly.com">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "name": "Automatiza Solar", "description": "Agente de atención y ventas por WhatsApp para empresas de paneles solares en Medellín: responde al instante, recomienda el kit con el catálogo del cliente y agenda la visita técnica.", "telephone": "+573223275495", "email": "piedrahita@automatizasolar.com", "url": "https://automatizasolar.com", "areaServed": [{"@type": "City", "name": "Medellín"}, {"@type": "Country", "name": "Colombia"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Tengo que cambiar de número de WhatsApp?", "acceptedAnswer": {"@type": "Answer", "text": "No. El agente trabaja sobre el número que ya usas con tus clientes."}}, {"@type": "Question", "name": "¿Y si le cotiza mal a un cliente?", "acceptedAnswer": {"@type": "Answer", "text": "Recomienda con la regla que tú le des: factura de luz, techo o patio, casa o negocio, y tu tabla de kits con tus precios. Si el caso se sale de la tabla, no adivina: deja la visita técnica agendada y te lo pasa a ti. La cotización final la sigues cerrando tú en la visita, como siempre."}}, {"@type": "Question", "name": "¿Y si le preguntan algo que no está en mi catálogo?", "acceptedAnswer": {"@type": "Answer", "text": "No improvisa. Cuando la pregunta se sale de lo que tú le diste, lo deja anotado y te avisa."}}, {"@type": "Question", "name": "¿Puedo tomar yo una conversación cuando quiera?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, en cualquier momento. Entras al hilo y el agente deja de responder ahí."}}, {"@type": "Question", "name": "¿Y los datos de mis clientes?", "acceptedAnswer": {"@type": "Answer", "text": "Se quedan en tu WhatsApp y en tu panel. Antes de tocar nada firmamos un acuerdo de tratamiento de datos (Ley 1581), y en la llamada te lo explico con papeles delante."}}, {"@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de cuántos kits y combinaciones tenga tu catálogo, porque eso es lo que marca el trabajo de montarlo. Lo vemos en la llamada, sobre tu catálogo real y sin compromiso."}}, {"@type": "Question", "name": "¿Hay permanencia?", "acceptedAnswer": {"@type": "Answer", "text": "No. Puedes parar cuando quieras. No tiene sentido atarte a algo que debería sostenerse solo por las visitas que te trae cada mes."}}, {"@type": "Question", "name": "¿Y si en mi caso no funciona?", "acceptedAnswer": {"@type": "Answer", "text": "Te lo digo en la llamada, antes de que pagues nada. Prefiero perder un piloto que meterme en uno que no va a salir bien. Y si arrancamos y en 15 días no te ha agendado al menos una visita técnica, te devuelvo el dinero."}}]}]}</script>
+<style>
+  /* ── Los colores de la marca (los mismos que la web actual) ── */
+  :root{
+    --tinta:#0a1e33; --tinta2:#4e5c6a; --tinta3:#647282;
+    --verde:#0f7355; --verde-osc:#0b6a4e; --verde-suave:#e6f3ee;
+    --mal:#b93a3a; --mal-bg:#fbeaea;
+    --borde:#dfe3e1; --borde-suave:#eceeec; --fondo:#fafaf9; --papel:#fff; --papel2:#f1f3f2;
+    --sombra:0 1px 2px rgba(10,30,51,.05), 0 14px 34px -22px rgba(10,30,51,.35);
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:16px;background:var(--fondo)}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--fondo);color:var(--tinta);line-height:1.5;-webkit-font-smoothing:antialiased;
+    overflow-x:clip;
+  }
+  img{display:block;max-width:100%;height:auto}
+  button{font-family:inherit}
+
+  .landing{max-width:720px;margin:0 auto;padding:0 18px 110px}
+
+  /* Marca, sin menú y sin salidas */
+  .marca{display:flex;justify-content:center;padding:22px 0 0}
+  .marca img{height:28px;width:auto}
+
+  /* Pieza 1 — llamada al nicho */
+  .nicho{padding:34px 0 0;text-align:center}
+  .nicho h2{font-size:22px;font-weight:800;letter-spacing:-.015em;color:var(--verde);line-height:1.25}
+  .nicho .apoyo{margin-top:7px;color:var(--tinta3);font-size:14.5px}
+
+  /* Pieza 2 — titular de resultado */
+  .titular{text-align:center;padding-top:18px}
+  .titular h1{font-size:36px;line-height:1.1;font-weight:800;letter-spacing:-.03em;text-wrap:balance}
+  .titular p{margin-top:14px;color:var(--tinta2);font-size:16.5px;text-wrap:pretty;max-width:56ch;margin-left:auto;margin-right:auto}
+
+  /* Pieza 3 — el VSL */
+  .vsl-zona{padding-top:26px}
+  .vsl-titulo{text-align:center;font-size:14px;color:var(--tinta2);margin-bottom:10px}
+  .vsl-titulo b{color:var(--tinta);font-weight:600}
+  .vsl{position:relative;aspect-ratio:16/9;background:#0a1e33;border-radius:14px;overflow:hidden;box-shadow:var(--sombra)}
+  .vsl video{position:absolute;inset:0;width:100%;height:100%;background:#000}
+  .vsl video[hidden]{display:none}
+  /* La portada es un botón: del vídeo no se descarga nada hasta el clic. */
+  .vsl-portada{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;background:#0a1e33;cursor:pointer}
+  .vsl-portada[hidden]{display:none}
+  .vsl-portada img{width:100%;height:100%;object-fit:cover}
+  /* El play va a la izquierda, sobre la pared: la cara y el mensaje de las 10:47 quedan a la vista. */
+  .vsl-play{
+    position:absolute;left:7%;top:50%;transform:translateY(-50%);
+    display:flex;align-items:center;gap:12px;
+  }
+  .play{
+    width:72px;height:72px;border-radius:50%;background:var(--verde);border:3px solid #fff;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(10,30,51,.45);
+    transition:transform .15s ease,background .15s ease;
+  }
+  .play svg{margin-left:5px}
+  .vsl-portada:hover .play{background:var(--verde-osc);transform:scale(1.05)}
+  .vsl-dur{
+    background:rgba(10,30,51,.86);color:#fff;font-size:14px;font-weight:700;border-radius:999px;padding:8px 14px;
+    white-space:nowrap;box-shadow:0 6px 18px rgba(10,30,51,.3);
+  }
+
+  /* CTA repetido: siempre al mismo sitio, la agenda */
+  .cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--verde);color:#fff;
+    border:none;border-radius:12px;padding:17px 30px;font-size:17px;font-weight:700;cursor:pointer;
+    box-shadow:0 10px 24px -14px rgba(15,115,85,.9);text-decoration:none;
+  }
+  .cta:hover{background:var(--verde-osc)}
+  .cta-zona{text-align:center;padding-top:26px}
+  .cta-zona .bajo{margin-top:11px;color:var(--tinta3);font-size:13px;line-height:1.5}
+
+  /* Secciones de desarrollo */
+  .seccion{padding-top:54px}
+  .eyebrow{display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--verde)}
+  .seccion h2{font-size:27px;line-height:1.2;font-weight:800;letter-spacing:-.025em;margin-top:9px;text-wrap:balance}
+  .seccion .entradilla{margin-top:11px;color:var(--tinta2);font-size:16px;text-wrap:pretty}
+
+  /* El relato del problema */
+  .relato{background:var(--papel);border:1px solid var(--borde);border-left:4px solid var(--tinta);border-radius:0 14px 14px 0;padding:24px 24px 22px;margin-top:20px}
+  .relato p{font-size:16.5px;line-height:1.65}
+  .relato p + p{margin-top:14px}
+  .relato .seco{font-weight:700}
+  .relato .msg{
+    display:inline-block;background:#e8f7ef;border:1px solid #cfe9db;border-radius:12px 12px 12px 3px;padding:9px 13px;
+    font-size:15.5px;line-height:1.45;margin-bottom:6px;
+  }
+  .relato .msg small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--tinta2);margin-top:4px}
+  .voces{margin-top:16px;display:grid;gap:9px}
+  .voz{background:var(--papel);border:1px solid var(--borde);border-radius:12px;padding:13px 16px;font-size:15.5px;font-weight:600;line-height:1.4}
+  .voz::before{content:"“";color:var(--verde);font-weight:800;margin-right:4px}
+  .voces-fuente{margin-top:8px;font-size:12.5px;color:var(--tinta3);line-height:1.5}
+  .fugas{display:grid;gap:11px;margin-top:18px}
+  .fuga{display:flex;gap:13px;align-items:flex-start;background:var(--papel);border:1px solid var(--borde);border-radius:12px;padding:15px 17px}
+  .fuga .x{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--mal-bg);color:var(--mal);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin-top:1px}
+  .fuga b{display:block;font-size:15.5px;font-weight:700}
+  .fuga span{display:block;color:var(--tinta2);font-size:14px;margin-top:3px}
+
+  /* Beneficios */
+  .beneficios{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:22px}
+  .ben{background:var(--papel);border:1px solid var(--borde);border-radius:14px;padding:19px 20px}
+  .ben .ico{width:34px;height:34px;border-radius:10px;background:var(--verde-suave);color:var(--verde);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .ben b{display:block;font-size:16px;font-weight:700;line-height:1.3}
+  .ben span{display:block;color:var(--tinta2);font-size:14px;margin-top:7px;line-height:1.5}
+
+  /* Pieza 4 — la demo, embebida y sin salidas */
+  .demo-escena{position:relative;margin-top:22px;padding-bottom:48px}
+  .navegador{background:var(--papel);border:1px solid var(--borde);border-radius:12px;overflow:hidden;box-shadow:var(--sombra)}
+  .nav-barra{background:var(--papel2);border-bottom:1px solid var(--borde);display:flex;align-items:center;gap:6px;padding:8px 11px}
+  .nav-punto{width:9px;height:9px;border-radius:50%;background:#cbd3d0}
+  .nav-url{flex:1;background:var(--papel);border:1px solid var(--borde);border-radius:20px;font-family:var(--mono);font-size:11px;color:var(--tinta2);padding:4px 11px;margin-left:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .telefono{
+    position:absolute;right:10px;bottom:0;width:35%;max-width:236px;background:#0a1e33;border-radius:26px;padding:9px;
+    box-shadow:0 18px 40px -16px rgba(10,30,51,.6);
+  }
+  .telefono .pantalla{border-radius:19px;overflow:hidden;background:#fff}
+  .telefono .muesca{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:34%;height:16px;background:#0a1e33;border-radius:0 0 12px 12px;z-index:2}
+  .demo-pie{margin-top:14px;font-size:14px;color:var(--tinta2);line-height:1.55}
+  .demo-pie b{color:var(--tinta);font-weight:700}
+
+  /* Cómo funciona */
+  .pasos3{margin-top:22px;border:1px solid var(--borde);border-radius:14px;background:var(--papel);overflow:hidden}
+  .p3{display:flex;gap:16px;padding:19px 20px;border-bottom:1px solid var(--borde)}
+  .p3:last-child{border-bottom:none}
+  .p3 .n{flex:0 0 auto;min-width:54px;height:30px;border-radius:15px;background:var(--tinta);color:#fff;font:700 12px/30px var(--mono);text-align:center;padding:0 10px}
+  .p3 b{display:block;font-size:16px;font-weight:700}
+  .p3 span{display:block;color:var(--tinta2);font-size:14px;margin-top:4px;line-height:1.5}
+  .remate{margin-top:16px;background:var(--tinta);color:#e6eef4;border-radius:12px;padding:17px 20px;font-size:16px;line-height:1.5}
+  .remate b{color:#fff;font-weight:700}
+
+  /* Prueba */
+  .quien{display:flex;gap:16px;align-items:center;background:var(--papel);border:1px solid var(--borde);border-radius:14px;padding:18px 20px;margin-top:22px}
+  .quien .foto{flex:0 0 auto;width:76px;height:76px;border-radius:50%;overflow:hidden;background:#fff;border:1px solid var(--borde)}
+  .quien .foto img{width:100%;height:100%;object-fit:cover}
+  .quien b{display:block;font-size:16px;font-weight:700}
+  .quien span{display:block;color:var(--tinta2);font-size:14px;margin-top:5px;line-height:1.5}
+  .caso{margin-top:13px;background:var(--papel);border:1px solid var(--borde);border-left:4px solid var(--verde);border-radius:0 14px 14px 0;padding:20px 22px}
+  .caso[hidden]{display:none}
+  .caso-etq{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--verde)}
+  .caso blockquote{margin-top:8px;font-size:17px;line-height:1.5;font-weight:600}
+  .caso-dato{margin-top:10px;font-size:14px;color:var(--tinta2)}
+  .caso-dato b{color:var(--tinta);font-weight:700}
+
+  /* El piloto y a quién sí / a quién no */
+  .piloto{background:var(--papel);border:1px solid var(--borde);border-radius:14px;padding:22px 24px;margin-top:20px}
+  .piloto li{display:flex;gap:11px;align-items:flex-start;list-style:none;font-size:15.5px;line-height:1.5}
+  .piloto li + li{margin-top:13px}
+  .piloto .tic{flex:0 0 auto;width:21px;height:21px;border-radius:50%;background:var(--verde-suave);color:var(--verde);display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .encaje{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:13px}
+  .encaje div{background:var(--papel);border:1px solid var(--borde);border-radius:14px;padding:17px 18px}
+  .encaje h3{font-size:14px;font-weight:700;margin-bottom:9px}
+  .encaje h3.si{color:var(--verde)} .encaje h3.no{color:var(--mal)}
+  .encaje li{list-style:none;font-size:14px;color:var(--tinta2);line-height:1.45;padding-left:14px;position:relative}
+  .encaje li + li{margin-top:7px}
+  .encaje li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.6}
+
+  /* Objeciones */
+  .faq{margin-top:20px;border:1px solid var(--borde);border-radius:14px;background:var(--papel);overflow:hidden}
+  .faq-item{border-bottom:1px solid var(--borde)}
+  .faq-item:last-child{border-bottom:none}
+  .faq-q{width:100%;display:flex;align-items:center;gap:13px;background:none;border:none;cursor:pointer;padding:17px 20px;font-size:16px;font-weight:600;color:var(--tinta);text-align:left}
+  .faq-q:hover{background:var(--fondo)}
+  .faq-q .mas{margin-left:auto;flex:0 0 auto;color:var(--verde);transition:transform .18s}
+  .faq-item.abierta .faq-q .mas{transform:rotate(45deg)}
+  .faq-r{display:none;padding:0 20px 18px;color:var(--tinta2);font-size:15px;line-height:1.6}
+  .faq-item.abierta .faq-r{display:block}
+
+  /* Piezas 5 + 6: formulario y calendario en un solo flujo (Calendly) */
+  .flujo{background:var(--papel);border:1px solid var(--borde);border-radius:16px;margin-top:20px;box-shadow:var(--sombra);overflow:hidden}
+  .flujo-cab{padding:22px 22px 14px}
+  .flujo-cab h3{font-size:21px;font-weight:800;letter-spacing:-.02em}
+  .flujo-cab p{color:var(--tinta2);font-size:14px;margin-top:5px;line-height:1.5}
+  .calendario{position:relative;border-top:1px solid var(--borde);background:var(--papel);min-height:700px}
+  .calendario iframe{display:block;width:100%;border:0;height:700px}
+  .esqueleto{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;background:var(--papel);padding:40px 24px 0}
+  .esqueleto p{font-size:15px;font-weight:600;color:var(--tinta2)}
+  .esqueleto .rejilla{margin-top:28px;display:grid;grid-template-columns:repeat(7,1fr);gap:12px;width:100%;max-width:352px}
+  .esqueleto .rejilla i{display:block;aspect-ratio:1;border-radius:50%;background:var(--papel2);animation:late 1.2s ease-in-out infinite}
+  @keyframes late{0%,100%{opacity:.5}50%{opacity:1}}
+  .esqueleto.fuera{display:none}
+  .privacidad-nota{padding:14px 22px 20px;font-size:13px;color:var(--tinta3);line-height:1.5;border-top:1px solid var(--borde-suave)}
+  .enlace{background:none;border:none;color:var(--tinta2);text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+  .enlace:hover{color:var(--tinta)}
+
+  .pie{text-align:center;padding:36px 0 0;color:var(--tinta3);font-size:12.5px;line-height:1.7}
+  .pie .legal{margin-top:10px;font-size:11.5px;color:var(--tinta3);max-width:60ch;margin-left:auto;margin-right:auto}
+
+  /* Barra fija de reserva */
+  .barra{
+    position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(255,255,255,.97);border-top:1px solid var(--borde);
+    padding:11px 16px calc(11px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:13px;
+    transform:translateY(105%);transition:transform .25s;box-shadow:0 -6px 24px -18px rgba(10,30,51,.6);
+  }
+  .barra.ver{transform:none}
+  .barra .txt{flex:1;min-width:0;font-size:13px;line-height:1.35;color:var(--tinta2)}
+  .barra .txt b{display:block;color:var(--tinta);font-size:14.5px;font-weight:700}
+  .barra a{flex:0 0 auto;background:var(--verde);color:#fff;border-radius:10px;padding:13px 20px;font-size:15px;font-weight:700;text-decoration:none}
+  .barra a:hover{background:var(--verde-osc)}
+
+  /* Cookies (se decide antes de que cargue el pixel) y política */
+  .cookies{
+    position:fixed;left:12px;right:12px;bottom:12px;z-index:70;background:var(--tinta);color:#dfe8ef;border-radius:13px;padding:16px 18px;
+    box-shadow:0 12px 40px -12px rgba(10,30,51,.6);display:flex;flex-wrap:wrap;gap:12px;align-items:center;max-width:690px;margin:0 auto;
+  }
+  .cookies.fuera{display:none}
+  .cookies p{flex:1;min-width:230px;font-size:13px;line-height:1.45}
+  .cookies button{border-radius:8px;padding:10px 16px;font-size:13.5px;font-weight:600;cursor:pointer;border:1px solid #3c5468;background:transparent;color:#dfe8ef}
+  .cookies button.si{background:var(--verde);border-color:var(--verde);color:#fff}
+  .cookies button.enlace{border:none;text-decoration:underline;padding:10px 4px;color:#93a7b7}
+
+  .velo{position:fixed;inset:0;z-index:80;background:rgba(10,30,51,.55);display:none;align-items:center;justify-content:center;padding:18px}
+  .velo.ver{display:flex}
+  .modal{background:var(--papel);border-radius:15px;max-width:560px;width:100%;max-height:84vh;overflow-y:auto;padding:26px;box-shadow:var(--sombra)}
+  .modal h3{font-size:19px;font-weight:800;letter-spacing:-.02em}
+  .modal .fecha{font-size:12.5px;color:var(--tinta3);margin-top:4px}
+  .modal h4{font-size:14px;font-weight:700;margin-top:18px}
+  .modal p{font-size:13.5px;color:var(--tinta2);margin-top:7px;line-height:1.55}
+  .modal .cerrar{margin-top:22px;width:100%;background:var(--tinta);color:#fff;border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:600;cursor:pointer}
+
+  @media (max-width:600px){
+    .landing{padding-bottom:120px}
+    .nicho{padding-top:28px}
+    .nicho h2{font-size:20px}
+    .titular h1{font-size:29px}
+    .titular p{font-size:16px}
+    .seccion h2{font-size:23px}
+    .seccion{padding-top:46px}
+    .beneficios,.encaje{grid-template-columns:1fr}
+    .relato{padding:20px 18px}
+    .relato p{font-size:16px}
+    .play{width:54px;height:54px;border-width:2px}
+    .play svg{width:18px;height:20px;margin-left:4px}
+    .vsl-play{left:5%;gap:8px}
+    .vsl-dur{font-size:12px;padding:6px 10px}
+    .cta{width:100%;padding:16px 20px;font-size:16px}
+    .telefono{width:44%;right:6px;border-radius:18px;padding:6px}
+    .telefono .pantalla{border-radius:13px}
+    .demo-escena{padding-bottom:78px}
+    .barra .txt{font-size:12px}
+    .barra .txt b{font-size:13.5px}
+    .barra a{padding:12px 16px;font-size:14px}
+    .calendario,.calendario iframe{min-height:640px}
+  }
+</style>
+</head>
+<body>
+
+<div class="landing" id="top">
+
+  <div class="marca"><img src="/brand/logo-horizontal.svg" alt="Automatiza Solar" width="172" height="28"></div>
+
+  <!-- 1 · LLAMADA A TU NICHO -->
+  <section class="nicho">
+    <h2>Empresas de paneles solares en Medellín</h2>
+    <p class="apoyo">Si la empresa es tuya y el WhatsApp lo contestas tú entre instalaciones, esto es para ti.</p>
+  </section>
+
+  <!-- 2 · TITULAR DE RESULTADO (las mismas palabras que el anuncio) -->
+  <section class="titular">
+    <h1>El WhatsApp que no contestas lo contesta tu competencia</h1>
+    <p>Tu WhatsApp de siempre contesta solo mientras estás en un tejado o ya cerraste: pregunta la factura y el techo, recomienda el kit con tus precios y deja la visita técnica agendada.</p>
+  </section>
+
+  <!-- 3 · EL VSL. Subtítulos incrustados en el propio vídeo: se entiende sin sonido.
+       Para cambiar el vídeo, súbelo con otro nombre (vsl-v2.mp4): /brand/ se cachea un año. -->
+  <section class="vsl-zona" id="video">
+    <p class="vsl-titulo"><b>Dame tres minutos y te enseño cómo se contesta solo</b> — funcionando, no en diapositivas</p>
+    <div class="vsl" id="vsl">
+      <video id="vslVideo" preload="none" playsinline controls hidden width="1920" height="1080"
+             poster="/brand/video/vsl-v1-portada.jpg">
+        <source src="/brand/video/vsl-v1.mp4" type="video/mp4">
+      </video>
+      <button class="vsl-portada" id="vslPortada" type="button" aria-label="Ver el video · 2 min">
+        <img src="/brand/video/vsl-v1-portada.jpg" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+        <span class="vsl-play" aria-hidden="true">
+          <span class="play"><svg width="24" height="26" viewBox="0 0 24 26" fill="#fff"><path d="M2 1.5v23l20-11.5z"/></svg></span>
+          <span class="vsl-dur">Ver el video · 2 min</span>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- CTA principal, justo después del hero -->
+  <div class="cta-zona">
+    <a class="cta" href="#agenda">Reservar llamada gratis de 30 minutos</a>
+    <p class="bajo">Sin compromiso. Si veo que no le sirve a tu empresa, te lo digo en esa misma llamada.</p>
+  </div>
+
+  <!-- ═══ El problema, contado como se vive ═══ -->
+  <section class="seccion">
+    <span class="eyebrow">Lo de todas las noches</span>
+    <h2>Son las 10:47 de la noche</h2>
+
+    <div class="relato">
+      <p><span class="msg">Buenas noches, ¿cuánto me sale un sistema de paneles para una casa?<small>10:47 p. m.</small></span></p>
+      <p>Lo manda alguien que vio tu anuncio o al que le pasaron tu número. Tú estás dormido, o en otro tejado. Lo ves mañana a las once, entre una instalación y el trámite con EPM, y le contestas.</p>
+      <p class="seco">No responde. Para entonces ya cotizó con otra empresa. Y el sábado vuelve a pasar.</p>
+    </div>
+
+    <div class="voces">
+      <p class="voz">Te dejan en visto.</p>
+      <p class="voz">Tardan horas en contestar, después más horas para cotizar.</p>
+      <p class="voz">Como que no les interesa vender.</p>
+    </div>
+    <p class="voces-fuente">Así hablan de las empresas solares quienes les escriben: reseñas y llamadas a instaladoras de Medellín.</p>
+
+    <div class="fugas">
+      <div class="fuga"><span class="x">✕</span><div><b>De noche entre semana</b><span>Los mensajes siguen entrando cuando ya cerraste, y gana la empresa que contesta primero, no la más barata.</span></div></div>
+      <div class="fuga"><span class="x">✕</span><div><b>Sábado y domingo</b><span>Es cuando la gente tiene tiempo de averiguar por paneles. Para tu WhatsApp son hasta dos días de silencio.</span></div></div>
+      <div class="fuga"><span class="x">✕</span><div><b>En horario, pero estás en un tejado</b><span>Cotizar a mano te toma 30 o 40 minutos por cliente. Mientras tanto, el siguiente espera.</span></div></div>
+    </div>
+  </section>
+
+  <!-- ═══ Beneficios: resultado, no características ═══ -->
+  <section class="seccion">
+    <span class="eyebrow">Lo que cambia</span>
+    <h2>Qué pasa mañana a las 10:47</h2>
+    <p class="entradilla">El mismo mensaje, a la misma hora. Con una diferencia.</p>
+
+    <div class="beneficios">
+      <div class="ben">
+        <span class="ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 2"/></svg></span>
+        <b>Le contestan en segundos</b>
+        <span>A las diez de la noche, un domingo o en temporada alta. No hay hora mala ni cola de mensajes por revisar.</span>
+      </div>
+      <div class="ben">
+        <span class="ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 9.2a6.3 6.3 0 0 1-6.8 6.3L3 16.5l1-5.4A6.3 6.3 0 1 1 15.5 9.2z"/></svg></span>
+        <b>Le preguntan lo que tú preguntarías</b>
+        <span>Cuánto le llega de luz, si los paneles van en techo o en patio, si es casa o negocio. Las tres que harías tú si estuvieras mirando el celular.</span>
+      </div>
+      <div class="ben">
+        <span class="ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="13" height="10" rx="2"/><path d="M2.5 8h13M6 12h2"/></svg></span>
+        <b>Recibe el kit con tus precios</b>
+        <span>Paneles, inversor y baterías de tu catálogo, en pesos. Si pregunta algo que no está en tu catálogo, no se lo inventan: te lo pasan a ti.</span>
+      </div>
+      <div class="ben">
+        <span class="ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3.5" width="13" height="12" rx="2"/><path d="M2.5 7.5h13M6 2v3M12 2v3M6.5 11l1.8 1.8L11.5 9.5"/></svg></span>
+        <b>Tú te enteras con la visita ya puesta</b>
+        <span>Por la mañana ves quién escribió, qué kit se recomendó y qué visita técnica quedó agendada. Es tu WhatsApp de siempre: entras a cualquier conversación cuando quieras.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · LA DEMO, EMBEBIDA (sin enlaces de salida) -->
+  <section class="seccion">
+    <span class="eyebrow">La demo</span>
+    <h2>Así se ve un lunes a las 7:40 de la mañana</h2>
+    <p class="entradilla">Es el panel de una empresa de ejemplo con las conversaciones de anoche. Andrés escribió a las 10:47 p. m.; a las 10:57 ya tenía su kit y la visita técnica agendada. En la llamada lo recorremos juntos, con tu catálogo.</p>
+
+    <div class="demo-escena">
+      <div class="navegador">
+        <div class="nav-barra">
+          <span class="nav-punto"></span><span class="nav-punto"></span><span class="nav-punto"></span>
+          <span class="nav-url">Panel de clientes · Las conversaciones de anoche</span>
+        </div>
+        <img src="/brand/fotos/demo-panel.jpg" alt="Panel de la demo: la lista de conversaciones de anoche y, a la derecha, el chat con Andrés Zapata terminando en «Visita técnica agendada · Kit 1»" width="1440" height="1010" loading="lazy" decoding="async">
+      </div>
+      <div class="telefono" aria-hidden="true">
+        <span class="muesca"></span>
+        <div class="pantalla"><img src="/brand/fotos/demo-chat.jpg" alt="" width="414" height="836" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+    <p class="demo-pie"><b>Es la demo, con una empresa de ejemplo:</b> los nombres y las cifras no son reales. Lo que sí es real es el agente funcionando, y lo abrimos juntos en la llamada.</p>
+  </section>
+
+  <!-- ═══ Cómo funciona ═══ -->
+  <section class="seccion">
+    <span class="eyebrow">Cómo funciona</span>
+    <h2>Siete días hábiles, y tú solo pones el catálogo</h2>
+
+    <div class="pasos3">
+      <div class="p3"><span class="n">Día 1</span><div><b>Me pasas lo tuyo</b><span>Tu número de WhatsApp de siempre, tu catálogo con los precios en pesos y qué se puede combinar con qué. Nada técnico.</span></div></div>
+      <div class="p3"><span class="n">Día 3</span><div><b>Ya responde y lo pruebas tú</b><span>Le escribes como si fueras un cliente, ves cómo contesta con tus kits reales y me pides los cambios.</span></div></div>
+      <div class="p3"><span class="n">Día 7</span><div><b>Queda instalado en tu número</b><span>No instalas nada, no aprendes ningún programa y no cambias de herramienta.</span></div></div>
+    </div>
+
+    <div class="remate">Lo que tienes que hacer tú: <b>pasarme el catálogo</b>. Lo demás lo hago yo.</div>
+  </section>
+
+  <!-- ═══ Prueba: quién está detrás ═══ -->
+  <section class="seccion">
+    <span class="eyebrow">Quién está detrás</span>
+    <h2>Con quién vas a hablar</h2>
+    <p class="entradilla">Nada de agencias ni de vendedores: quien te atiende en la llamada es quien construye el agente y lo deja instalado en tu WhatsApp.</p>
+
+    <div class="quien">
+      <span class="foto"><img src="/brand/fotos/alejandro.jpg" alt="Alejandro Piedrahita" width="76" height="76" loading="lazy"></span>
+      <div>
+        <b>Alejandro Piedrahita · Medellín</b>
+        <span>Construyo e instalo el agente yo mismo y solo trabajo con empresas de paneles solares. En la llamada estoy yo: no hay vendedor ni equipo de cuentas en el medio.</span>
+      </div>
+    </div>
+
+    <!-- CASO DE ÉXITO · oculto (atributo hidden) hasta tener el primero REAL: nombre de la
+         empresa, un resultado que se pueda comprobar y permiso por escrito del cliente.
+         Para mostrarlo: cambia los tres textos y quita `hidden`. Nunca un caso inventado. -->
+    <div class="caso" id="casoExito" hidden>
+      <span class="caso-etq">Caso real</span>
+      <blockquote>«Frase del cliente, tal cual la dijo.»</blockquote>
+      <p class="caso-dato"><b>Resultado concreto (visitas agendadas, instalaciones cerradas)</b> · Empresa, ciudad</p>
+    </div>
+  </section>
+
+  <!-- ═══ CTA intermedio ═══ -->
+  <div class="cta-zona">
+    <a class="cta" href="#agenda">Quiero ver si encaja en mi empresa</a>
+    <p class="bajo">Treinta minutos, gratis. Sales sabiendo si esto te sirve o no.</p>
+  </div>
+
+  <!-- ═══ Cómo trabajo ═══ -->
+  <section class="seccion">
+    <span class="eyebrow">Cómo trabajo</span>
+    <h2>Se empieza por un piloto</h2>
+    <p class="entradilla">Nadie firma un proyecto grande con alguien a quien acaba de conocer. Yo tampoco lo haría.</p>
+
+    <ul class="piloto">
+      <li><span class="tic"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.4L5 9l4.5-6"/></svg></span><div><b>En tu WhatsApp de siempre.</b> Con tu número, tu catálogo y tus precios. No cambias de herramienta ni de número.</div></li>
+      <li><span class="tic"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.4L5 9l4.5-6"/></svg></span><div><b>Funcionando en siete días hábiles.</b> Lo pruebas tú antes de que le responda a tus clientes, y me pides los cambios.</div></li>
+      <li><span class="tic"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.4L5 9l4.5-6"/></svg></span><div><b>Con garantía.</b> Si en 15 días el agente no te ha agendado al menos una visita técnica, te devuelvo el dinero.</div></li>
+      <li><span class="tic"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.4L5 9l4.5-6"/></svg></span><div><b>Y si no encaja, se queda ahí.</b> Sin permanencia. Ves funcionando lo que contrataste antes de hablar de nada más grande.</div></li>
+    </ul>
+
+    <div class="encaje">
+      <div>
+        <h3 class="si">Trabajo contigo si</h3>
+        <ul>
+          <li>Te escriben más de quince personas al día preguntando por paneles, y hoy las contestas tú entre instalaciones</li>
+          <li>Ya inviertes en que te escriban (anuncios, Instagram, referidos) y quieres que no se pierdan</li>
+          <li>Eres el dueño o socio y decides sin pasar por un comité</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="no">No te sirve si</h3>
+        <ul>
+          <li>Vendes solo proyectos grandes o licitaciones y el WhatsApp no es tu canal de venta</li>
+          <li>Prefieres cotizar cada caso a mano y revisar cada mensaje</li>
+          <li>Quieres probarlo con datos inventados en vez de tu catálogo de kits</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Objeciones ═══ -->
+  <section class="seccion">
+    <span class="eyebrow">Lo que siempre me preguntan</span>
+    <h2>Las dudas, antes de la llamada</h2>
+
+    <div class="faq" id="faq">
+      <div class="faq-item">
+        <button class="faq-q" onclick="alternaFaq(this)">¿Tengo que cambiar de número de WhatsApp?<span class="mas"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7.5 2v11M2 7.5h11"/></svg></span></button>
+        <div class="faq-r">No. El agente trabaja sobre el número que ya usas con tus clientes.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="alternaFaq(this)">¿Y si le cotiza mal a un cliente?<span class="mas"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7.5 2v11M2 7.5h11"/></svg></span></button>
+        <div class="faq-r">Recomienda con la regla que tú le des: factura de luz, techo o patio, casa o negocio, y tu tabla de kits con tus precios. Si el caso se sale de la tabla, no adivina: deja la visita técnica agendada y te lo pasa a ti. La cotización final la sigues cerrando tú en la visita, como siempre.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="alternaFaq(this)">¿Y si le preguntan algo que no está en mi catálogo?<span class="mas"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7.5 2v11M2 7.5h11"/></svg></span></button>
+        <div class="faq-r">No improvisa. Cuando la pregunta se sale de lo que tú le diste, lo deja anotado y te avisa.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="alternaFaq(this)">¿Puedo tomar yo una conversación cuando quiera?<span class="mas"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7.5 2v11M2 7.5h11"/></svg></span></button>
+        <div class="faq-r">Sí, en cualquier momento. Entras al hilo y el agente deja de responder ahí.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="alternaFaq(this)">¿Y los datos de mis clientes?<span class="mas"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7.5 2v11M2 7.5h11"/></svg></span></button>
+        <div class="faq-r">Se quedan en tu WhatsApp y en tu panel. Antes de tocar nada firmamos un acuerdo de tratamiento de datos (Ley 1581), y en la llamada te lo explico con papeles delante.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="alternaFaq(this)">¿Cuánto cuesta?<span class="mas"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7.5 2v11M2 7.5h11"/></svg></span></button>
+        <div class="faq-r">Depende de cuántos kits y combinaciones tenga tu catálogo, porque eso es lo que marca el trabajo de montarlo. Lo vemos en la llamada, sobre tu catálogo real y sin compromiso.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="alternaFaq(this)">¿Hay permanencia?<span class="mas"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7.5 2v11M2 7.5h11"/></svg></span></button>
+        <div class="faq-r">No. Puedes parar cuando quieras. No tiene sentido atarte a algo que debería sostenerse solo por las visitas que te trae cada mes.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="alternaFaq(this)">¿Y si en mi caso no funciona?<span class="mas"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7.5 2v11M2 7.5h11"/></svg></span></button>
+        <div class="faq-r">Te lo digo en la llamada, antes de que pagues nada. Prefiero perder un piloto que meterme en uno que no va a salir bien. Y si arrancamos y en 15 días no te ha agendado al menos una visita técnica, te devuelvo el dinero.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 + 6 · FORMULARIO Y CALENDARIO EN EL MISMO FLUJO: Calendly pide los datos y reserva -->
+  <section class="seccion" id="agenda">
+    <span class="eyebrow">El último paso</span>
+    <h2>Mañana a las 10:47 vuelve a pasar</h2>
+    <p class="entradilla">Alguien va a preguntar cuánto le sale un sistema para su casa, y la diferencia es quién contesta. Elige día y hora y en treinta minutos te digo si esto te sirve, con tu catálogo de kits delante. No tienes que preparar nada.</p>
+
+    <div class="flujo">
+      <div class="flujo-cab">
+        <h3>Reserva una llamada gratis de 30 minutos</h3>
+        <p>Eliges día y hora y dejas tu nombre, tu correo y tu WhatsApp. Un minuto, sin salir de esta página.</p>
+      </div>
+      <div class="calendario">
+        <iframe id="calendly" title="Elige día y hora para la llamada" loading="lazy"></iframe>
+        <div class="esqueleto" id="esqueleto" aria-hidden="true">
+          <p>Cargando el calendario…</p>
+          <div class="rejilla"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <p class="privacidad-nota">Tus datos se usan solo para esta llamada. <button class="enlace" onclick="abrePrivacidad()">Política de tratamiento de datos</button>.</p>
+    </div>
+  </section>
+
+  <footer class="pie">
+    Alejandro Piedrahita · Automatiza Solar · Medellín<br>
+    <button class="enlace" onclick="abrePrivacidad()">Política de tratamiento de datos</button> · <button class="enlace" onclick="preferenciasCookies()">Preferencias de cookies</button>
+    <p class="legal">La conversación y el panel de esta página son una recreación con datos ficticios: ninguna persona ni empresa que aparece es real y las fotos de perfil son de banco de imágenes. Ninguna cifra de esta página es una promesa de resultados.</p>
+  </footer>
+</div>
+
+<!-- Barra de reserva: aparece cuando el hero queda atrás y se aparta al llegar a la agenda -->
+<div class="barra" id="barra">
+  <div class="txt"><b>Llamada gratis de 30 minutos</b>Sin compromiso</div>
+  <a href="#agenda">Reservar</a>
+</div>
+
+<!-- Aviso de cookies: se decide ANTES de que cargue el pixel -->
+<div class="cookies fuera" id="cookies" role="dialog" aria-label="Cookies">
+  <p>Uso cookies para medir de qué anuncio llegan las visitas y las reservas. El pixel de Meta no se carga hasta que tú lo decidas.</p>
+  <button class="enlace" onclick="abrePrivacidad()">Más información</button>
+  <button onclick="decideCookies('denied')">Solo las necesarias</button>
+  <button class="si" onclick="decideCookies('granted')">Aceptar</button>
+</div>
+
+<div class="velo" id="velo" onclick="cierraSiFuera(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="pol-titulo">
+    <h3 id="pol-titulo">Política de tratamiento de datos personales</h3>
+    <p class="fecha">Actualizada el 1 de octubre de 2026 · Ley 1581 de 2012 y Decreto 1377 de 2013</p>
+    <h4>Quién trata tus datos</h4>
+    <p>Alejandro Piedrahita, de Automatiza Solar, con domicilio en Medellín, Colombia. Para cualquier cuestión sobre tus datos puedes escribirme a piedrahita@automatizasolar.com o al WhatsApp +57 322 327 5495.</p>
+    <h4>Qué datos recojo</h4>
+    <p>Los que dejas al reservar una llamada: nombre, correo, número de WhatsApp, la web o el Instagram de tu empresa y el día y la hora que eliges.</p>
+    <h4>Para qué los uso</h4>
+    <p>Para contactarte sobre tu solicitud, preparar la llamada y enviarte la confirmación y el recordatorio. Nada más: no los vendo, no los cedo a terceros y no te apunto a ninguna lista sin que lo pidas.</p>
+    <h4>Quién más los toca</h4>
+    <p>La agenda funciona con Calendly, que guarda la reserva por encargo mío, y la web está alojada en Vercel. Los dos tienen sus servidores fuera de Colombia. Al reservar autorizas que tus datos se guarden ahí con esta única finalidad.</p>
+    <h4>Cookies y medición de anuncios</h4>
+    <p>Si aceptas las cookies, la página carga el pixel de Meta para saber qué anuncios traen visitas y reservas. Meta recibe que visitaste la página y, si reservas, que hubo una reserva. Si no aceptas, el pixel no se carga y la página funciona igual. Puedes cambiar tu decisión cuando quieras en «Preferencias de cookies», al pie de la página.</p>
+    <h4>Cuánto tiempo los guardo</h4>
+    <p>Mientras dure la conversación comercial contigo, o hasta que me pidas borrarlos.</p>
+    <h4>Tus derechos</h4>
+    <p>Puedes conocer, actualizar y rectificar tus datos, pedir prueba de tu autorización, saber cómo se han usado, revocar la autorización o pedir que los borre, y presentar una queja ante la Superintendencia de Industria y Comercio.</p>
+    <p>Para ejercerlos, escríbeme a piedrahita@automatizasolar.com. Respondo las consultas en un máximo de diez días hábiles y los reclamos en un máximo de quince, y te confirmo por escrito cuando tus datos estén borrados.</p>
+    <button class="cerrar" onclick="cierraPrivacidad()">Cerrar</button>
+  </div>
+</div>
+
+<script>
+/* ═══════ Pixel de Meta: solo después de aceptar las cookies ═══════
+   Mismo conjunto de datos y misma llave de consentimiento que la web actual,
+   así la decisión de la persona vale para las dos páginas. */
+const PIXEL_ID = "994422470343287";
+const KEY = "as-cookies";
+const VSL_KEY = "as-vsl";
+const $ = id => document.getElementById(id);
+
+function leeConsent(){ try { const v = localStorage.getItem(KEY); return v === "granted" || v === "denied" ? v : null; } catch { return null; } }
+function guardaConsent(v){ try { v ? localStorage.setItem(KEY, v) : localStorage.removeItem(KEY); } catch {} }
+
+function cargaPixel(){
+  if (window.fbq){ window.fbq("consent", "grant"); return; }
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+  s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq("init", PIXEL_ID);
+  fbq("track", "PageView");
+}
+
+function decideCookies(v){
+  guardaConsent(v);
+  $("cookies").classList.add("fuera");
+  if (v === "granted") cargaPixel(); else window.fbq?.("consent", "revoke");
+  vigilaBarra();
+}
+function preferenciasCookies(){
+  guardaConsent(null);
+  window.fbq?.("consent", "revoke");
+  $("cookies").classList.remove("fuera");
+  vigilaBarra();
+}
+
+/* Qué pasó con el VSL en esta visita: viaja con los eventos de la agenda. */
+function estadoVideo(){
+  let pct = -1; try { pct = Number(sessionStorage.getItem(VSL_KEY) ?? -1); } catch {}
+  return pct < 0 ? { video: "no_visto" } : { video: "visto", video_porcentaje: pct };
+}
+/* ═══════ El VSL ═══════
+   Nada del vídeo se descarga hasta el play. El play y los cuartos vistos van al pixel
+   (VSLPlay y VSLProgreso 25/50/75/100, solo si se aceptaron las cookies) y quedan en
+   esta pestaña para saber, al reservar, si la persona vio el vídeo y cuánto. */
+const vslVideo = $("vslVideo"), vslPortada = $("vslPortada");
+const vistos = new Set();
+function recuerdaVideo(pct){
+  try { const prev = Number(sessionStorage.getItem(VSL_KEY) ?? -1); if (pct > prev) sessionStorage.setItem(VSL_KEY, String(pct)); } catch {}
+}
+vslPortada.addEventListener("click", () => {
+  vslVideo.hidden = false;
+  vslPortada.hidden = true;
+  vslVideo.play().catch(() => {});
+  recuerdaVideo(0);
+  window.fbq?.("trackCustom", "VSLPlay");
+});
+vslVideo.addEventListener("timeupdate", () => {
+  if (!vslVideo.duration) return;
+  const pct = vslVideo.currentTime / vslVideo.duration * 100;
+  for (const m of [25, 50, 75]) {
+    if (pct >= m && !vistos.has(m)) { vistos.add(m); recuerdaVideo(m); window.fbq?.("trackCustom", "VSLProgreso", { porcentaje: m }); }
+  }
+});
+vslVideo.addEventListener("ended", () => {
+  if (vistos.has(100)) return;
+  vistos.add(100); recuerdaVideo(100);
+  window.fbq?.("trackCustom", "VSLProgreso", { porcentaje: 100 });
+});
+
+/* ═══════ Calendly: formulario y calendario en el mismo flujo ═══════ */
+const CALENDLY = "https://calendly.com/piedrahita-automatizasolar/30min";
+function arrancaCalendly(){
+  const f = $("calendly");
+  if (f.src) return;
+  const p = new URLSearchParams({ embed_domain: location.host, embed_type: "Inline", hide_gdpr_banner: "1", hide_event_type_details: "1", primary_color: "0f7355" });
+  f.src = CALENDLY + "?" + p;
+}
+if (document.readyState === "complete") arrancaCalendly(); else window.addEventListener("load", arrancaCalendly, { once: true });
+
+window.addEventListener("message", e => {
+  if (e.origin !== "https://calendly.com") return;
+  const ev = e.data && e.data.event;
+  if (typeof ev !== "string" || !ev.startsWith("calendly.")) return;
+  $("esqueleto").classList.add("fuera");
+  if (ev === "calendly.page_height"){
+    // Mientras arranca, Calendly manda alturas de pocos píxeles: se ignoran.
+    const h = parseInt(e.data.payload && e.data.payload.height, 10);
+    if (h >= 400) $("calendly").style.height = h + "px";
+  }
+  if (ev === "calendly.date_and_time_selected") window.fbq?.("trackCustom", "AgendaHora", estadoVideo());
+  if (ev === "calendly.event_scheduled"){
+    const uri = e.data.payload && e.data.payload.invitee && e.data.payload.invitee.uri;
+    window.fbq?.("track", "Schedule", estadoVideo(), uri ? { eventID: uri } : undefined);
+  }
+});
+
+/* ═══════ Objeciones ═══════ */
+function alternaFaq(b){ b.parentElement.classList.toggle("abierta"); }
+
+/* ═══════ La barra fija de reserva ═══════ */
+function vigilaBarra(){
+  const alto = window.innerHeight;
+  const agenda = $("agenda").getBoundingClientRect();
+  const vsl = $("vsl").getBoundingClientRect();
+  const pasadoElHero = vsl.bottom < 0;
+  const agendaALaVista = agenda.top < alto - 80;
+  const cookiesDecididas = $("cookies").classList.contains("fuera");
+  const ctaALaVista = [...document.querySelectorAll(".cta")].some(b => { const c = b.getBoundingClientRect(); return c.height > 0 && c.bottom > 0 && c.top < alto - 40; });
+  $("barra").classList.toggle("ver", pasadoElHero && !agendaALaVista && !ctaALaVista && cookiesDecididas);
+}
+window.addEventListener("scroll", vigilaBarra, { passive: true });
+window.addEventListener("resize", vigilaBarra);
+
+/* ═══════ Política ═══════ */
+function abrePrivacidad(){ $("velo").classList.add("ver"); }
+function cierraPrivacidad(){ $("velo").classList.remove("ver"); }
+function cierraSiFuera(ev){ if (ev.target === $("velo")) cierraPrivacidad(); }
+document.addEventListener("keydown", e => { if (e.key === "Escape") cierraPrivacidad(); });
+
+/* Arranque: la decisión de cookies manda */
+const consent = leeConsent();
+if (consent === "granted") cargaPixel();
+else if (consent === null) $("cookies").classList.remove("fuera");
+vigilaBarra();
+</script>
+</body>
+</html>

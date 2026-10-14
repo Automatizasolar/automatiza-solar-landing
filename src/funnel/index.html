@@ -667,6 +667,8 @@ window.addEventListener("message", e => {
   if (ev === "calendly.event_scheduled"){
     const uri = e.data.payload && e.data.payload.invitee && e.data.payload.invitee.uri;
     window.fbq?.("track", "Schedule", estadoVideo(), uri ? { eventID: uri } : undefined);
+    // La misma reserva también como CompleteRegistration: el objetivo Ventas de Meta no acepta Schedule.
+    window.fbq?.("track", "CompleteRegistration", estadoVideo(), uri ? { eventID: uri } : undefined);
   }
 });
 

@@ -11,7 +11,7 @@ export const WHATSAPP_MESSAGE =
 export const site = {
   name: "Automatiza Solar",
   email: "piedrahita@automatizasolar.com",
-  calendly: "https://calendly.com/piedrahita-automatizasolar/30min",
+  calendly: "https://calendly.com/piedrahita-automatizasolar/45",
   panel: "https://automatiza-solar-demo.vercel.app",
   whatsappHref: `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
   whatsappPretty: "+57 322 327 5495",

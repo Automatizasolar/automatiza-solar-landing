@@ -644,7 +644,7 @@ vslVideo.addEventListener("ended", () => {
 });
 
 /* ═══════ Calendly: formulario y calendario en el mismo flujo ═══════ */
-const CALENDLY = "https://calendly.com/piedrahita-automatizasolar/30min";
+const CALENDLY = "https://calendly.com/piedrahita-automatizasolar/45";
 function arrancaCalendly(){
   const f = $("calendly");
   if (f.src) return;
@@ -695,7 +695,10 @@ function cierraPrivacidad(){ $("velo").classList.remove("ver"); }
 function cierraSiFuera(ev){ if (ev.target === $("velo")) cierraPrivacidad(); }
 document.addEventListener("keydown", e => { if (e.key === "Escape") cierraPrivacidad(); });
 
-/* Arranque: la decisión de cookies manda */
+/* Arranque: la decisión de cookies manda.
+   Enlace de pruebas: automatizasolar.com/?cookies borra la decisión guardada y vuelve a
+   mostrar el aviso en este navegador, para probar el pixel desde cero. Los anuncios no lo usan. */
+if (new URLSearchParams(location.search).has("cookies")) guardaConsent(null);
 const consent = leeConsent();
 if (consent === "granted") cargaPixel();
 else if (consent === null) $("cookies").classList.remove("fuera");

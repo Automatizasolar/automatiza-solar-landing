@@ -697,8 +697,14 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") cierraPrivac
 
 /* Arranque: la decisión de cookies manda.
    Enlace de pruebas: automatizasolar.com/?cookies borra la decisión guardada y vuelve a
-   mostrar el aviso en este navegador, para probar el pixel desde cero. Los anuncios no lo usan. */
-if (new URLSearchParams(location.search).has("cookies")) guardaConsent(null);
+   mostrar el aviso en este navegador, para probar el pixel desde cero. Los anuncios no lo usan.
+   El parámetro se quita de la dirección al momento: si recargas, vale lo que decidiste. */
+const urlPrueba = new URL(location.href);
+if (urlPrueba.searchParams.has("cookies")){
+  guardaConsent(null);
+  urlPrueba.searchParams.delete("cookies");
+  history.replaceState(null, "", urlPrueba.pathname + urlPrueba.search + urlPrueba.hash);
+}
 const consent = leeConsent();
 if (consent === "granted") cargaPixel();
 else if (consent === null) $("cookies").classList.remove("fuera");
